@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gajendra Somawat - Flutter Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <style>
         /* CSS Variables */
         :root {
@@ -37,7 +40,11 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 1rem;
@@ -221,18 +228,32 @@
         }
 
         .hero-image img {
-            max-width: 100%;
+            max-width: 70%;
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             animation: morphing 10s infinite ease-in-out;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes morphing {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
-            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
-            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
-            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            0% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+
+            25% {
+                border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+            }
+
+            50% {
+                border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+            }
+
+            75% {
+                border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+            }
+
+            100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
         }
 
         .hero-title {
@@ -378,7 +399,8 @@
             font-weight: 500;
         }
 
-        .filter-btn.active, .filter-btn:hover {
+        .filter-btn.active,
+        .filter-btn:hover {
             background: var(--primary);
             color: white;
         }
@@ -419,7 +441,8 @@
             display: flex;
             transition: transform 0.5s ease;
         }
-        .project-img{
+
+        .project-img {
             width: cover;
         }
 
@@ -846,15 +869,15 @@
                 flex-direction: column;
                 text-align: center;
             }
-            
+
             .hero-btns {
                 justify-content: center;
             }
-            
+
             .about-content {
                 grid-template-columns: 1fr;
             }
-            
+
             .contact-container {
                 grid-template-columns: 1fr;
             }
@@ -864,19 +887,19 @@
             .hamburger {
                 display: block;
             }
-            
+
             .hamburger.active .bar:nth-child(2) {
                 opacity: 0;
             }
-            
+
             .hamburger.active .bar:nth-child(1) {
                 transform: translateY(8px) rotate(45deg);
             }
-            
+
             .hamburger.active .bar:nth-child(3) {
                 transform: translateY(-8px) rotate(-45deg);
             }
-            
+
             .nav-menu {
                 position: fixed;
                 left: -100%;
@@ -890,27 +913,27 @@
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
                 padding: 20px 0;
             }
-            
+
             .nav-menu.active {
                 left: 0;
             }
-            
+
             .hero-title {
                 font-size: 2.8rem;
             }
-            
+
             .hero-subtitle {
                 font-size: 1.5rem;
             }
-            
+
             .section-title {
                 font-size: 2rem;
             }
-            
+
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .modal-images {
                 grid-template-columns: 1fr;
             }
@@ -920,32 +943,33 @@
             .hero-title {
                 font-size: 2.2rem;
             }
-            
+
             .hero-subtitle {
                 font-size: 1.3rem;
             }
-            
+
             .hero-btns {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .tech-item {
                 width: 130px;
             }
-            
+
             .modal-links {
                 flex-direction: column;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Header & Navigation -->
     <header id="header">
         <div class="container nav-container">
             <a href="#" class="logo">G<span>S</span></a>
-            
+
             <nav>
                 <ul class="nav-menu">
                     <li><a href="#hero" class="nav-link">Home</a></li>
@@ -955,7 +979,7 @@
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
-            
+
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -970,7 +994,8 @@
             <div class="hero-text">
                 <h1 class="hero-title">Gajendra Somawat</h1>
                 <h2 class="hero-subtitle">Flutter Developer</h2>
-                <p class="hero-desc">2.5+ years of experience delivering cross-platform apps for Android & iOS. Skilled in GetX, API integration, Firebase, and more.</p>
+                <p class="hero-desc">2.5+ years of experience delivering cross-platform apps for Android & iOS. Skilled
+                    in GetX, API integration, Firebase, and more.</p>
                 <div class="hero-btns">
                     <a href="#projects" class="btn">View Projects</a>
                     <a href="#contact" class="btn btn-accent">Contact Me</a>
@@ -978,7 +1003,7 @@
             </div>
             <div class="hero-image">
                 <!-- Replace with your actual image -->
-                <img src="https://placehold.co/400x500/2D46B9/FFFFFF?text=Gajendra+S" alt="Gajendra Somawat">
+                <img src="images/profile.jpg" alt="Gajendra Somawat">
             </div>
         </div>
     </section>
@@ -989,9 +1014,13 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>I'm a Flutter Developer with 2.5+ years of experience delivering cross-platform apps for Android & iOS. Skilled in GetX (flexible to other state management as needed), API integration, Firebase (Realtime DB, Storage, Push Notifications), local storage (Hive, SharedPreferences, SQLite), real-time chat, maps, and payment gateways (Stripe, Futura).</p>
-                    <p>Experienced in full app lifecycle including Android & iOS deployment. Actively seeking Flutter Developer opportunities to contribute and grow.</p>
-                    
+                    <p>I'm a Flutter Developer with 2.5+ years of experience delivering cross-platform apps for Android
+                        & iOS. Skilled in GetX (flexible to other state management as needed), API integration, Firebase
+                        (Realtime DB, Storage, Push Notifications), local storage (Hive, SharedPreferences, SQLite),
+                        real-time chat, maps, and payment gateways (Stripe, Futura).</p>
+                    <p>Experienced in full app lifecycle including Android & iOS deployment. Actively seeking Flutter
+                        Developer opportunities to contribute and grow.</p>
+
                     <div class="about-skills">
                         <span class="skill-chip">Flutter</span>
                         <span class="skill-chip">Dart</span>
@@ -1018,8 +1047,16 @@
             <h2 class="section-title">Technologies I Use</h2>
             <div class="tech-scroll-container">
                 <div class="tech-item">
-                    <i class="fab fa-flutter tech-icon"></i>
+                    <i class="fas fa-mobile-alt tech-icon"></i>
                     <h3 class="tech-name">Flutter</h3>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-android tech-icon"></i>
+                    <h3 class="tech-name">Android</h3>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-apple tech-icon"></i>
+                    <h3 class="tech-name">iOS</h3>
                 </div>
                 <div class="tech-item">
                     <i class="fab fa-react tech-icon"></i>
@@ -1049,14 +1086,7 @@
                     <i class="fas fa-paint-brush tech-icon"></i>
                     <h3 class="tech-name">Tailwind</h3>
                 </div>
-                <div class="tech-item">
-                    <i class="fab fa-android tech-icon"></i>
-                    <h3 class="tech-name">Android</h3>
-                </div>
-                <div class="tech-item">
-                    <i class="fab fa-apple tech-icon"></i>
-                    <h3 class="tech-name">iOS</h3>
-                </div>
+
             </div>
         </div>
     </section>
@@ -1065,22 +1095,25 @@
     <section id="projects" class="projects section">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
-            
+
             <div class="projects-filter">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="flutter">Flutter</button>
                 <button class="filter-btn" data-filter="mobile">Mobile</button>
                 <button class="filter-btn" data-filter="web">Web</button>
             </div>
-            
+
             <div class="projects-grid">
                 <!-- Project 1: MAD3WO -->
-                <div class="project-card" data-category="flutter mobile" data-project="mad3wo">
+                <div class="project-card" data-category="flutter mobile web" data-project="mad3wo">
                     <div class="project-img">
                         <div class="project-img-slider">
-                            <div class="project-img-slide"><img class="project-img" src="./images/mad3wo/mad3wo.png"></div>
-                            <div class="project-img-slide"><img class="project-img" style="" src="./images/mad3wo/mad3wo2.png"></div>
-                            <div class="project-img-slide"><img class="project-img" style="" src="./images/mad3wo/3.png"></div>
+                            <div class="project-img-slide"><img class="project-img" src="./images/mad3wo/mad3wo.png">
+                            </div>
+                            <div class="project-img-slide"><img class="project-img" style=""
+                                    src="./images/mad3wo/mad3wo2.png"></div>
+                            <div class="project-img-slide"><img class="project-img" style=""
+                                    src="./images/mad3wo/3.png"></div>
                         </div>
                         <div class="project-platform">
                             <span class="platform-badge">Android</span>
@@ -1090,7 +1123,9 @@
                     <div class="project-info">
                         <h3 class="project-title">MAD3WO</h3>
                         <span class="project-date">Oct 2024 - Present</span>
-                        <p class="project-desc">Developed a cross-platform Flutter app with 70+ responsive screens. Implemented clean UI using GetX for state management and integrated REST APIs. Added Firebase Realtime Database, Storage, and Push Notifications for dynamic content.</p>
+                        <p class="project-desc">Developed a cross-platform Flutter app with 70+ responsive screens.
+                            Implemented clean UI using GetX for state management and integrated REST APIs. Added
+                            Firebase Realtime Database, Storage, and Push Notifications for dynamic content.</p>
                         <div class="project-tech">
                             <span>Flutter</span>
                             <span>GetX</span>
@@ -1100,7 +1135,7 @@
                         <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- Project 2: QADEM -->
                 <div class="project-card" data-category="flutter mobile" data-project="qadem">
                     <div class="project-img">
@@ -1119,7 +1154,10 @@
                     <div class="project-info">
                         <h3 class="project-title">QADEM</h3>
                         <span class="project-date">Jul 2025 - Present</span>
-                        <p class="project-desc">Built a scalable Flutter app focusing on real-time chat, maps, and modern UI/UX. Integrated APIs and payment gateways (Stripe & Futura) for seamless transactions. Used GetX for state management and Firebase services for notifications & data sync.</p>
+                        <p class="project-desc">Built a scalable Flutter app focusing on real-time chat, maps, and
+                            modern UI/UX. Integrated APIs and payment gateways (Stripe & Futura) for seamless
+                            transactions. Used GetX for state management and Firebase services for notifications & data
+                            sync.</p>
                         <div class="project-tech">
                             <span>Flutter</span>
                             <span>GetX</span>
@@ -1129,7 +1167,7 @@
                         <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- Project 3: Anexee -->
                 <div class="project-card" data-category="flutter mobile" data-project="anexee">
                     <div class="project-img">
@@ -1147,7 +1185,9 @@
                     <div class="project-info">
                         <h3 class="project-title">Anexee</h3>
                         <span class="project-date">Dec 2024 - Present</span>
-                        <p class="project-desc">Built a dynamic Android app for Anaxee using Flutter. Features include real-time data with MQTT, encrypted login, REST API integration, dynamic menus, grids, and data-driven layouts.</p>
+                        <p class="project-desc">Built a dynamic Android app for Anaxee using Flutter. Features include
+                            real-time data with MQTT, encrypted login, REST API integration, dynamic menus, grids, and
+                            data-driven layouts.</p>
                         <div class="project-tech">
                             <span>Flutter</span>
                             <span>MQTT</span>
@@ -1157,7 +1197,7 @@
                         <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- Project 4: AccHHU -->
                 <div class="project-card" data-category="flutter mobile" data-project="acchhu">
                     <div class="project-img">
@@ -1175,7 +1215,8 @@
                     <div class="project-info">
                         <h3 class="project-title">AccHHU</h3>
                         <span class="project-date">Dec 2022 - Jun 2025</span>
-                        <p class="project-desc">Implemented RS232 communication, API integration, dynamic form generation, and Bluetooth thermal printing capabilities within the Flutter application.</p>
+                        <p class="project-desc">Implemented RS232 communication, API integration, dynamic form
+                            generation, and Bluetooth thermal printing capabilities within the Flutter application.</p>
                         <div class="project-tech">
                             <span>Flutter</span>
                             <span>RS232</span>
@@ -1185,7 +1226,7 @@
                         <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- Project 5: Line Monitoring -->
                 <div class="project-card" data-category="flutter mobile" data-project="line-monitoring">
                     <div class="project-img">
@@ -1203,7 +1244,9 @@
                     <div class="project-info">
                         <h3 class="project-title">Line Monitoring</h3>
                         <span class="project-date">Sep 2024 - Apr 2025</span>
-                        <p class="project-desc">Developed a Flutter-based application designed to perform comprehensive auditing of various processes. Implemented a fully functional dynamic form system rendered through JSON.</p>
+                        <p class="project-desc">Developed a Flutter-based application designed to perform comprehensive
+                            auditing of various processes. Implemented a fully functional dynamic form system rendered
+                            through JSON.</p>
                         <div class="project-tech">
                             <span>Flutter</span>
                             <span>JSON</span>
@@ -1213,7 +1256,7 @@
                         <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- Project 6: LineAudit -->
                 <div class="project-card" data-category="flutter mobile" data-project="line-audit">
                     <div class="project-img">
@@ -1231,7 +1274,9 @@
                     <div class="project-info">
                         <h3 class="project-title">LineAudit</h3>
                         <span class="project-date">May 2024 - Jul 2024</span>
-                        <p class="project-desc">Developed a Flutter-based application designed to perform comprehensive auditing of various processes. Implemented a fully functional dynamic form system rendered through JSON.</p>
+                        <p class="project-desc">Developed a Flutter-based application designed to perform comprehensive
+                            auditing of various processes. Implemented a fully functional dynamic form system rendered
+                            through JSON.</p>
                         <div class="project-tech">
                             <span>Flutter</span>
                             <span>JSON</span>
@@ -1241,7 +1286,7 @@
                         <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- Project 7: AlphaTND -->
                 <div class="project-card" data-category="flutter mobile" data-project="alphatnd">
                     <div class="project-img">
@@ -1257,7 +1302,9 @@
                     <div class="project-info">
                         <h3 class="project-title">AlphaTND</h3>
                         <span class="project-date">Oct 2023 - Apr 2024</span>
-                        <p class="project-desc">Played a key role in the development of AlphaTND, an advanced mobile application focused on enhancing user interaction and data management through a range of sophisticated features.</p>
+                        <p class="project-desc">Played a key role in the development of AlphaTND, an advanced mobile
+                            application focused on enhancing user interaction and data management through a range of
+                            sophisticated features.</p>
                         <div class="project-tech">
                             <span>Flutter</span>
                             <span>RESTful APIs</span>
@@ -1267,7 +1314,7 @@
                         <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- Project 8: SerialCom -->
                 <div class="project-card" data-category="flutter mobile" data-project="serialcom">
                     <div class="project-img">
@@ -1282,7 +1329,9 @@
                     <div class="project-info">
                         <h3 class="project-title">SerialCom - Flutter Plugin</h3>
                         <span class="project-date">Sep 2023 - Sep 2023</span>
-                        <p class="project-desc">Developed a custom Flutter plugin for USB serial communication on Android using Java. This plugin was created to enhance the capabilities of my current company's applications.</p>
+                        <p class="project-desc">Developed a custom Flutter plugin for USB serial communication on
+                            Android using Java. This plugin was created to enhance the capabilities of my current
+                            company's applications.</p>
                         <div class="project-tech">
                             <span>Flutter</span>
                             <span>Java</span>
@@ -1310,7 +1359,7 @@
     <section id="contact" class="contact section">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
-            
+
             <div class="contact-container">
                 <div class="contact-info">
                     <div class="contact-item">
@@ -1322,7 +1371,7 @@
                             <p>gmjoshi998@gmail.com</p>
                         </div>
                     </div>
-                    
+
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
@@ -1332,7 +1381,7 @@
                             <p>+91 9024064744</p>
                         </div>
                     </div>
-                    
+
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
@@ -1359,11 +1408,12 @@
                         </div>
                         <div class="contact-details">
                             <h4>LinkedIn</h4>
-                            <p><a href="https://www.linkedin.com/in/gajendra-somawat/" target="_blank">linkedin.com/in/gajendra-somawat</a></p>
+                            <p><a href="https://www.linkedin.com/in/gajendra-somawat/"
+                                    target="_blank">linkedin.com/in/gajendra-somawat</a></p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
@@ -1391,15 +1441,18 @@
             <div class="footer-container">
                 <div class="footer-about">
                     <div class="footer-logo">G<span>S</span></div>
-                    <p class="footer-desc">Flutter Developer with 2.5+ years of experience delivering cross-platform apps for Android & iOS.</p>
+                    <p class="footer-desc">Flutter Developer with 2.5+ years of experience delivering cross-platform
+                        apps for Android & iOS.</p>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/gajendra-somawat/" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/Gajendra99/" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/gajendra-somawat/" class="social-link" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Gajendra99/" class="social-link" target="_blank"><i
+                                class="fab fa-github"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="footer-links">
                     <h3 class="footer-title">Quick Links</h3>
                     <a href="#hero" class="footer-link">Home</a>
@@ -1408,7 +1461,7 @@
                     <a href="#projects" class="footer-link">Projects</a>
                     <a href="#contact" class="footer-link">Contact</a>
                 </div>
-                
+
                 <div class="footer-links">
                     <h3 class="footer-title">Technologies</h3>
                     <a href="#" class="footer-link">Flutter</a>
@@ -1418,7 +1471,7 @@
                     <a href="#" class="footer-link">GetX</a>
                 </div>
             </div>
-            
+
             <div class="copyright">
                 <p>&copy; 2023 Gajendra Somawat. All Rights Reserved.</p>
             </div>
@@ -1623,14 +1676,14 @@
         };
 
         // Sticky Header
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
-            
+
             // Back to Top Button
             const backToTop = document.querySelector('.back-to-top');
             if (window.scrollY > 500) {
@@ -1643,12 +1696,12 @@
         // Mobile Menu Toggle
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
-        
-        hamburger.addEventListener('click', function() {
+
+        hamburger.addEventListener('click', function () {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-        
+
         // Close mobile menu when clicking on a nav link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
@@ -1660,18 +1713,18 @@
         // Project Filtering
         const filterButtons = document.querySelectorAll('.filter-btn');
         const projectCards = document.querySelectorAll('.project-card');
-        
+
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 // Remove active class from all buttons
                 filterButtons.forEach(btn => btn.classList.remove('active'));
-                
+
                 // Add active class to clicked button
                 button.classList.add('active');
-                
+
                 // Get filter value
                 const filterValue = button.getAttribute('data-filter');
-                
+
                 // Show/hide projects based on filter
                 projectCards.forEach(card => {
                     if (filterValue === 'all' || card.getAttribute('data-category').includes(filterValue)) {
@@ -1685,12 +1738,12 @@
 
         // Project Image Sliders
         const projectImageSliders = document.querySelectorAll('.project-img-slider');
-        
+
         projectImageSliders.forEach(slider => {
             let slideIndex = 0;
             const slides = slider.querySelectorAll('.project-img-slide');
             const totalSlides = slides.length;
-            
+
             setInterval(() => {
                 slideIndex = (slideIndex + 1) % totalSlides;
                 slider.style.transform = `translateX(-${slideIndex * 100}%)`;
@@ -1701,13 +1754,13 @@
         const modal = document.getElementById('project-modal');
         const modalBody = document.getElementById('modal-body');
         const modalClose = document.querySelector('.modal-close');
-        
+
         // Open modal when project card is clicked
         document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('click', () => {
                 const projectId = card.getAttribute('data-project');
                 const project = projects[projectId];
-                
+
                 if (project) {
                     // Create modal content
                     let modalContent = `
@@ -1716,17 +1769,17 @@
                             <span class="modal-subtitle">${project.date}</span>
                             <div class="modal-platform">
                     `;
-                    
+
                     // Add platform badges
                     project.platforms.forEach(platform => {
                         modalContent += `<span class="platform-badge">${platform}</span>`;
                     });
-                    
+
                     modalContent += `</div></div>`;
-                    
+
                     // Add images from the project data
                     modalContent += `<div class="modal-images">`;
-                    
+
                     if (project.images && project.images.length > 0) {
                         project.images.forEach(imageUrl => {
                             modalContent += `<img src="${imageUrl}" alt="${project.title}" class="modal-image">`;
@@ -1737,49 +1790,49 @@
                             modalContent += `<div class="modal-image">${project.title} Image ${i}</div>`;
                         }
                     }
-                    
+
                     modalContent += `</div>`;
-                    
+
                     // Add description
                     modalContent += `<div class="modal-desc">${project.description}</div>`;
-                    
+
                     // Add features
                     modalContent += `
                         <div class="modal-features">
                             <h4>Key Features</h4>
                             <ul>
                     `;
-                    
+
                     project.features.forEach(feature => {
                         modalContent += `<li>${feature}</li>`;
                     });
-                    
+
                     modalContent += `</ul></div>`;
-                    
+
                     // Add technologies
                     modalContent += `
                         <div class="project-tech" style="margin-bottom: 2rem;">
                     `;
-                    
+
                     project.technologies.forEach(tech => {
                         modalContent += `<span>${tech}</span>`;
                     });
-                    
+
                     modalContent += `</div>`;
-                    
+
                     // Add links if available
                     if (project.links && project.links.length > 0) {
                         modalContent += `
                             <div class="modal-links">
                         `;
-                        
+
                         project.links.forEach(link => {
                             modalContent += `<a href="${link.url}" target="_blank" class="btn">${link.name}</a>`;
                         });
-                        
+
                         modalContent += `</div>`;
                     }
-                    
+
                     // Set modal content and show modal
                     modalBody.innerHTML = modalContent;
                     modal.classList.add('active');
@@ -1787,13 +1840,13 @@
                 }
             });
         });
-        
+
         // Close modal
         modalClose.addEventListener('click', () => {
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
-        
+
         // Close modal when clicking outside
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
@@ -1805,7 +1858,7 @@
         // Form Submission
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
+            contactForm.addEventListener('submit', function (e) {
                 e.preventDefault();
                 alert('Thank you for your message! I will get back to you soon.');
                 contactForm.reset();
@@ -1815,11 +1868,11 @@
         // Animation on Scroll
         function animateOnScroll() {
             const elements = document.querySelectorAll('.tech-item, .project-card, .contact-item');
-            
+
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
                 const screenPosition = window.innerHeight / 1.3;
-                
+
                 if (elementPosition < screenPosition) {
                     element.style.opacity = 1;
                     element.style.transform = 'translateY(0)';
@@ -1839,4 +1892,5 @@
         window.addEventListener('load', animateOnScroll);
     </script>
 </body>
+
 </html>
