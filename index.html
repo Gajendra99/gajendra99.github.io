@@ -173,16 +173,19 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         header.scrolled {
-            padding: 10px 0;
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
@@ -213,6 +216,7 @@
             font-weight: 500;
             transition: var(--transition);
             position: relative;
+            color: var(--accent);
         }
 
         .nav-link::after {
@@ -227,7 +231,7 @@
         }
 
         .nav-link:hover {
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .nav-link:hover::after {
@@ -341,6 +345,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1118,7 +1123,9 @@
                 top: 0;
                 gap: 0;
                 flex-direction: column;
-                background: white;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
                 width: 100%;
                 height: 100vh;
                 text-align: center;
@@ -1262,7 +1269,7 @@
             <h2 class="section-title">Technologies I Use</h2>
             <div class="tech-scroll-container">
                 <div class="tech-item">
-                    <i class="fab fa-flutter tech-icon"></i>
+                    <i class="fas fa-mobile-alt tech-icon"></i>
                     <h3 class="tech-name">Flutter</h3>
                 </div>
                 <div class="tech-item">
@@ -1354,9 +1361,15 @@
                 <div class="project-card" data-category="flutter mobile" data-project="qadem">
                     <div class="project-img">
                         <div class="project-img-slider">
-                            <div class="project-img-slide" style="background: linear-gradient(45deg, #2D46B9, #34A853); color: white; display: flex; align-items: center; justify-content: center;">QADEM App</div>
-                            <div class="project-img-slide" style="background: linear-gradient(45deg, #FF9D00, #34A853); color: white; display: flex; align-items: center; justify-content: center;">Screen 2</div>
-                            <div class="project-img-slide" style="background: linear-gradient(45deg, #2D46B9, #FF9D00); color: white; display: flex; align-items: center; justify-content: center;">Screen 3</div>
+                            <div class="project-img-slide"
+                                style="background: linear-gradient(45deg, #2D46B9, #34A853); color: white; display: flex; align-items: center; justify-content: center;">
+                                QADEM App</div>
+                            <div class="project-img-slide"
+                                style="background: linear-gradient(45deg, #FF9D00, #34A853); color: white; display: flex; align-items: center; justify-content: center;">
+                                Screen 2</div>
+                            <div class="project-img-slide"
+                                style="background: linear-gradient(45deg, #2D46B9, #FF9D00); color: white; display: flex; align-items: center; justify-content: center;">
+                                Screen 3</div>
                         </div>
                         <div class="project-platform">
                             <span class="platform-badge">Android</span>
@@ -1384,9 +1397,15 @@
                 <div class="project-card" data-category="flutter mobile" data-project="anexee">
                     <div class="project-img">
                         <div class="project-img-slider">
-                            <div class="project-img-slide" style="background: linear-gradient(45deg, #2D46B9, #34A853); color: white; display: flex; align-items: center; justify-content: center;">Anexee App</div>
-                            <div class="project-img-slide" style="background: linear-gradient(45deg, #FF9D00, #34A853); color: white; display: flex; align-items: center; justify-content: center;">Screen 2</div>
-                            <div class="project-img-slide" style="background: linear-gradient(45deg, #2D46B9, #FF9D00); color: white; display: flex; align-items: center; justify-content: center;">Screen 3</div>
+                            <div class="project-img-slide"
+                                style="background: linear-gradient(45deg, #2D46B9, #34A853); color: white; display: flex; align-items: center; justify-content: center;">
+                                Anexee App</div>
+                            <div class="project-img-slide"
+                                style="background: linear-gradient(45deg, #FF9D00, #34A853); color: white; display: flex; align-items: center; justify-content: center;">
+                                Screen 2</div>
+                            <div class="project-img-slide"
+                                style="background: linear-gradient(45deg, #2D46B9, #FF9D00); color: white; display: flex; align-items: center; justify-content: center;">
+                                Screen 3</div>
                         </div>
                         <div class="project-platform">
                             <span class="platform-badge">Android</span>
@@ -1412,9 +1431,15 @@
                 <div class="project-card" data-category="flutter mobile" data-project="acchhu">
                     <div class="project-img">
                         <div class="project-img-slider">
-                            <div class="project-img-slide" style="background: linear-gradient(45deg, #2D46B9, #34A853); color: white; display: flex; align-items: center; justify-content: center;">AccHHU App</div>
-                            <div class="project-img-slide" style="background: linear-gradient(45deg, #FF9D00, #34A853); color: white; display: flex; align-items: center; justify-content: center;">Screen 2</div>
-                            <div class="project-img-slide" style="background: linear-gradient(45deg, #2D46B9, #FF9D00); color: white; display: flex; align-items: center; justify-content: center;">Screen 3</div>
+                            <div class="project-img-slide"
+                                style="background: linear-gradient(45deg, #2D46B9, #34A853); color: white; display: flex; align-items: center; justify-content: center;">
+                                AccHHU App</div>
+                            <div class="project-img-slide"
+                                style="background: linear-gradient(45deg, #FF9D00, #34A853); color: white; display: flex; align-items: center; justify-content: center;">
+                                Screen 2</div>
+                            <div class="project-img-slide"
+                                style="background: linear-gradient(45deg, #2D46B9, #FF9D00); color: white; display: flex; align-items: center; justify-content: center;">
+                                Screen 3</div>
                         </div>
                         <div class="project-platform">
                             <span class="platform-badge">Android</span>
@@ -1692,7 +1717,7 @@
     <!-- JavaScript -->
     <script>
         // Initialize particles.js
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             particlesJS('particles-js', {
                 "particles": {
                     "number": {
