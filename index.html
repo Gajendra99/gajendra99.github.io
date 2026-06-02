@@ -4,35 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gajendra Somawat | Flutter Developer</title>
+    <title>Gajendra Somawat — Flutter Developer | Cross-Platform Mobile Apps</title>
+
+    <!-- SEO -->
+    <meta name="description"
+        content="Gajendra Somawat — Flutter Developer with 3+ years of experience building high-performance cross-platform mobile apps for Android & iOS. Specialized in GetX, Firebase, and scalable mobile solutions.">
+    <meta name="keywords"
+        content="Flutter Developer, Mobile App Developer, Android, iOS, Cross-Platform, Dart, Firebase, GetX">
+    <meta name="author" content="Gajendra Somawat">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Gajendra Somawat — Flutter Developer">
+    <meta property="og:description"
+        content="3+ years of experience delivering high-performance cross-platform apps for Android & iOS.">
+    <meta property="og:type" content="website">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Animations -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Canvas Background -->
-    <canvas id="bg-canvas"></canvas>
-
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
-    <!-- Preloader (Split Shutters) -->
+    <!-- Preloader -->
     <div id="preloader">
         <div class="shutter shutter-top"></div>
         <div class="shutter shutter-bottom"></div>
@@ -44,7 +48,7 @@
 
     <div class="content-wrapper">
         <!-- Header -->
-        <header>
+        <header id="main-header">
             <div class="container nav-container">
                 <a href="#" class="logo">Gajendra<span>.</span></a>
 
@@ -58,7 +62,7 @@
                     </ul>
                 </nav>
 
-                <div class="hamburger">
+                <div class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -69,25 +73,41 @@
         <!-- Hero Section -->
         <section id="hero" class="hero section">
             <div class="container hero-content">
-                <div class="hero-text" data-aos="fade-right">
-
-                    <h1 class="hero-title">Gajendra Somawat</h1>
-                    <h2 class="hero-subtitle">Flutter Developer</h2>
-                    <p class="hero-desc">
+                <div class="hero-text">
+                    <span class="hero-badge reveal">Available for Work</span>
+                    <h1 class="hero-title reveal">Gajendra Somawat</h1>
+                    <h2 class="hero-subtitle reveal">Flutter Developer</h2>
+                    <p class="hero-desc reveal">
                         3+ years of experience delivering high-performance cross-platform apps for Android & iOS.
                         Specialized in GetX, Firebase, and building scalable mobile solutions.
                     </p>
-                    <div class="hero-btns">
-                        <a href="#projects" class="btn btn-primary">View Projects</a>
+
+                    <div class="hero-stats reveal">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="3">0<span>+</span></div>
+                            <div class="stat-label">Years Exp.</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="10">0<span>+</span></div>
+                            <div class="stat-label">Apps Built</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="2">0</div>
+                            <div class="stat-label">Platforms</div>
+                        </div>
+                    </div>
+
+                    <div class="hero-btns reveal">
+                        <a href="#projects" class="btn btn-primary">View Projects <i class="fas fa-arrow-right"></i></a>
                         <a href="#contact" class="btn btn-outline">Contact Me</a>
                     </div>
                 </div>
 
-                <div class="hero-image" data-aos="fade-left">
+                <div class="hero-image reveal-scale">
                     <div class="hero-blob"></div>
                     <div class="hero-img-wrapper">
-                        <img src="images/profile.jpg" alt="Gajendra Somawat"
-                            onError="this.src='https://placehold.co/400x400/1e1e1e/FFF?text=GS'">
+                        <img src="images/profile.jpg" alt="Gajendra Somawat — Flutter Developer"
+                            onerror="this.src='https://placehold.co/400x400/111118/6366f1?text=GS&font=space-grotesk'">
                     </div>
                 </div>
             </div>
@@ -96,18 +116,18 @@
         <!-- About Section -->
         <section id="about" class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">About Me</h2>
+                <h2 class="section-title reveal">About Me</h2>
                 <div class="about-content">
-                    <div class="about-img" data-aos="fade-right">
-                        <img src="https://placehold.co/600x400/0a0a0a/00f2ff?text=Developer+Workplace" alt="Workspace">
+                    <div class="about-img reveal-left">
+                        <img src="https://placehold.co/600x420/111118/6366f1?text=Developer+Workspace&font=space-grotesk"
+                            alt="Developer Workspace">
                     </div>
-                    <div class="about-text" data-aos="fade-left">
-                        <h3>Building Digital Experiences</h3>
+                    <div class="about-text reveal-right">
+                        <h3>Building <span>Digital Experiences</span></h3>
                         <p>
                             I am a passionate Flutter Developer with over 3 years of hands-on experience in the full
-                            mobile
-                            app development lifecycle.
-                            I have successfully deployed apps to both the Google Play Store and Apple App Store.
+                            mobile app development lifecycle. I have successfully deployed apps to both the Google Play
+                            Store and Apple App Store.
                         </p>
                         <p>
                             My technical stack includes <strong>GetX</strong> for state management (flexible to others),
@@ -115,7 +135,7 @@
                             local storage solutions (Hive, SQLite), and hardware integrations (Bluetooth, Thermal
                             Printers).
                         </p>
-                        <div class="skills-container">
+                        <div class="skills-container stagger-children">
                             <span class="skill-tag">Flutter</span>
                             <span class="skill-tag">Dart</span>
                             <span class="skill-tag">GetX</span>
@@ -129,15 +149,13 @@
             </div>
         </section>
 
-        <!-- Tech Stack Scroll -->
-        <section id="skills" class="section" style="padding: 50px 0;">
+        <!-- Technologies Marquee -->
+        <section id="skills" class="section" style="padding: 48px 0;">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up" style="margin-bottom: 40px; font-size: 2rem;">Technologies
-                </h2>
+                <h2 class="section-title reveal" style="margin-bottom: 32px; font-size: 1.8rem;">Technologies</h2>
             </div>
             <div class="tech-slider">
                 <div class="tech-track">
-                    <!-- Duplicate items for seamless loop -->
                     <div class="tech-item"><i class="fas fa-mobile-alt"></i><span>Flutter</span></div>
                     <div class="tech-item"><i class="fab fa-android"></i><span>Android</span></div>
                     <div class="tech-item"><i class="fab fa-apple"></i><span>iOS</span></div>
@@ -146,7 +164,7 @@
                     <div class="tech-item"><i class="fas fa-database"></i><span>Firebase</span></div>
                     <div class="tech-item"><i class="fas fa-server"></i><span>SQL</span></div>
                     <div class="tech-item"><i class="fas fa-code-branch"></i><span>Git</span></div>
-                    <!-- Duplicate Set -->
+                    <!-- Duplicate for seamless loop -->
                     <div class="tech-item"><i class="fas fa-mobile-alt"></i><span>Flutter</span></div>
                     <div class="tech-item"><i class="fab fa-android"></i><span>Android</span></div>
                     <div class="tech-item"><i class="fab fa-apple"></i><span>iOS</span></div>
@@ -162,25 +180,24 @@
         <!-- Projects Section -->
         <section id="projects" class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">My Projects</h2>
+                <h2 class="section-title reveal">My Projects</h2>
 
-                <div class="projects-filter" data-aos="fade-up" data-aos-delay="100">
+                <div class="projects-filter reveal">
                     <button class="filter-btn active" data-filter="all">All</button>
                     <button class="filter-btn" data-filter="flutter">Flutter</button>
                     <button class="filter-btn" data-filter="mobile">Mobile</button>
                     <button class="filter-btn" data-filter="web">Web</button>
                 </div>
 
-                <div class="projects-grid">
+                <div class="projects-grid stagger-children">
                     <!-- Project 1: MAD3WO -->
-                    <div class="project-card" data-category="flutter mobile web" data-project="mad3wo"
-                        data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card" data-category="flutter mobile web" data-project="mad3wo">
                         <div class="project-img-container">
                             <div class="project-overlay">
                                 <span class="project-details-btn">View Details</span>
                             </div>
-                            <img src="./images/mad3wo/mad3wo.png" alt="MAD3WO"
-                                onError="this.src='https://placehold.co/600x400/202020/FFF?text=MAD3WO'">
+                            <img src="./images/mad3wo/mad3wo.png" alt="MAD3WO — Cross-platform Flutter App"
+                                onerror="this.src='https://placehold.co/600x400/111118/6366f1?text=MAD3WO&font=space-grotesk'">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">MAD3WO</h3>
@@ -195,19 +212,18 @@
                     </div>
 
                     <!-- Project 2: QADEM -->
-                    <div class="project-card" data-category="flutter mobile" data-project="qadem" data-aos="fade-up"
-                        data-aos-delay="200">
+                    <div class="project-card" data-category="flutter mobile" data-project="qadem">
                         <div class="project-img-container">
                             <div class="project-overlay">
                                 <span class="project-details-btn">View Details</span>
                             </div>
-                            <img src="https://placehold.co/600x400/0a0a0a/333?text=QADEM" alt="QADEM">
+                            <img src="https://placehold.co/600x400/111118/6366f1?text=QADEM&font=space-grotesk"
+                                alt="QADEM — Service App">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">QADEM</h3>
                             <p class="project-desc">Service app with real-time chat, maps, and Stripe payment
-                                integration.
-                            </p>
+                                integration.</p>
                             <div class="project-tags">
                                 <span>Flutter</span>
                                 <span>Maps</span>
@@ -217,13 +233,13 @@
                     </div>
 
                     <!-- Project 3: Anexee -->
-                    <div class="project-card" data-category="flutter mobile" data-project="anexee" data-aos="fade-up"
-                        data-aos-delay="300">
+                    <div class="project-card" data-category="flutter mobile" data-project="anexee">
                         <div class="project-img-container">
                             <div class="project-overlay">
                                 <span class="project-details-btn">View Details</span>
                             </div>
-                            <img src="https://placehold.co/600x400/0a0a0a/333?text=Anexee" alt="Anexee">
+                            <img src="https://placehold.co/600x400/111118/6366f1?text=Anexee&font=space-grotesk"
+                                alt="Anexee — Enterprise App">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Anexee</h3>
@@ -238,13 +254,13 @@
                     </div>
 
                     <!-- Project 4: AccHHU -->
-                    <div class="project-card" data-category="flutter mobile" data-project="acchhu" data-aos="fade-up"
-                        data-aos-delay="100">
+                    <div class="project-card" data-category="flutter mobile" data-project="acchhu">
                         <div class="project-img-container">
                             <div class="project-overlay">
                                 <span class="project-details-btn">View Details</span>
                             </div>
-                            <img src="https://placehold.co/600x400/0a0a0a/333?text=AccHHU" alt="AccHHU">
+                            <img src="https://placehold.co/600x400/111118/6366f1?text=AccHHU&font=space-grotesk"
+                                alt="AccHHU — Hardware Integration App">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">AccHHU</h3>
@@ -259,13 +275,13 @@
                     </div>
 
                     <!-- Project 5: Line Monitoring -->
-                    <div class="project-card" data-category="flutter mobile" data-project="line-monitoring"
-                        data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card" data-category="flutter mobile" data-project="line-monitoring">
                         <div class="project-img-container">
                             <div class="project-overlay">
                                 <span class="project-details-btn">View Details</span>
                             </div>
-                            <img src="https://placehold.co/600x400/0a0a0a/333?text=Audit+App" alt="Line Monitoring">
+                            <img src="https://placehold.co/600x400/111118/6366f1?text=Audit+App&font=space-grotesk"
+                                alt="Line Monitoring — Auditing Application">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Line Monitoring</h3>
@@ -279,14 +295,13 @@
                     </div>
 
                     <!-- Project 6: AlphaTND -->
-                    <div class="project-card" data-category="flutter mobile" data-project="alphatnd" data-aos="fade-up"
-                        data-aos-delay="300">
+                    <div class="project-card" data-category="flutter mobile" data-project="alphatnd">
                         <div class="project-img-container">
                             <div class="project-overlay">
                                 <span class="project-details-btn">View Details</span>
                             </div>
-                            <img src="./images/alphatnd/3.png" alt="AlphaTND"
-                                onError="this.src='https://placehold.co/600x400/0a0a0a/333?text=AlphaTND'">
+                            <img src="./images/alphatnd/3.png" alt="AlphaTND — Field Operations App"
+                                onerror="this.src='https://placehold.co/600x400/111118/6366f1?text=AlphaTND&font=space-grotesk'">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">AlphaTND</h3>
@@ -300,15 +315,14 @@
                         </div>
                     </div>
 
-                    <!-- Project 8: SerialCom -->
-                    <div class="project-card" data-category="flutter mobile" data-project="serialcom" data-aos="fade-up"
-                        data-aos-delay="100">
+                    <!-- Project 7: SerialCom -->
+                    <div class="project-card" data-category="flutter mobile" data-project="serialcom">
                         <div class="project-img-container">
                             <div class="project-overlay">
                                 <span class="project-details-btn">View Details</span>
                             </div>
-                            <img src="./images/serialCom/serialCom.webp" alt="SerialCom Theme"
-                                onError="this.src='https://placehold.co/600x400/0a0a0a/333?text=Plugin'">
+                            <img src="./images/serialCom/serialCom.webp" alt="SerialCom — Flutter USB Serial Plugin"
+                                onerror="this.src='https://placehold.co/600x400/111118/6366f1?text=SerialCom&font=space-grotesk'">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">SerialCom Plugin</h3>
@@ -328,7 +342,7 @@
         <!-- Project Modal -->
         <div class="modal" id="project-modal">
             <div class="modal-content">
-                <div class="modal-close"><i class="fas fa-times"></i></div>
+                <div class="modal-close" id="modal-close-btn"><i class="fas fa-times"></i></div>
                 <div class="modal-body">
                     <!-- Content injected via JS -->
                 </div>
@@ -338,45 +352,50 @@
         <!-- Contact Section -->
         <section id="contact" class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
-                <div class="contact-container" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="section-title reveal">Get In Touch</h2>
+                <div class="contact-container reveal-scale">
                     <div class="contact-info">
                         <h3>Let's Collaborate</h3>
                         <p>I'm currently available for freelance work or full-time opportunities. If you have a project
-                            that
-                            needs a skilled Flutter developer, let's talk.</p>
+                            that needs a skilled Flutter developer, let's talk.</p>
 
-                        <div style="margin-bottom: 20px;">
-                            <span style="display: block; color: var(--text-muted); font-size: 0.9rem;">Email</span>
-                            <a href="mailto:gmjoshi998@gmail.com"
-                                style="color: var(--primary); font-size: 1.1rem;">gmjoshi998@gmail.com</a>
+                        <div class="contact-detail">
+                            <span class="label">Email</span>
+                            <a href="mailto:gmjoshi998@gmail.com">gmjoshi998@gmail.com</a>
                         </div>
 
-                        <div style="margin-bottom: 20px;">
-                            <span style="display: block; color: var(--text-muted); font-size: 0.9rem;">Phone</span>
-                            <a href="tel:+919024064744" style="color: var(--text-main); font-size: 1.1rem;">+91
-                                9024064744</a>
+                        <div class="contact-detail">
+                            <span class="label">Phone</span>
+                            <a href="tel:+919024064744">+91 9024064744</a>
                         </div>
 
                         <div class="social-links">
-                            <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
-                            <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.github.com/gajendra99" class="social-btn" aria-label="GitHub"><i
+                                    class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/gajendra-somawat/" class="social-btn"
+                                aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <!-- <a href="#" class="social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a> -->
                         </div>
                     </div>
 
-                    <div class="contact-form">
+                    <form class="contact-form" id="contact-form">
                         <div class="form-group">
-                            <input type="text" placeholder="Your Name">
+                            <label for="contact-name">Name</label>
+                            <input type="text" id="contact-name" placeholder="Your name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Your Email">
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="contact-email" placeholder="your@email.com" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Your Message"></textarea>
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" placeholder="Tell me about your project..."
+                                required></textarea>
                         </div>
-                        <button class="btn btn-primary" style="width: 100%;">Send Message</button>
-                    </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            Send Message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -384,18 +403,14 @@
         <!-- Footer -->
         <footer>
             <div class="container">
-                <div class="logo" style="margin-bottom: 20px;">Gajendra<span>.</span></div>
+                <div class="logo">Gajendra<span>.</span></div>
                 <p class="footer-text">© 2025 Gajendra Somawat. All rights reserved.</p>
-                <p class="footer-text" style="font-size: 0.8rem; margin-top: 10px; opacity: 0.5;">Designed with <span
-                        style="color: red;">❤</span> for excellence</p>
+                <p class="footer-text footer-sub">Designed with <span class="footer-heart">❤</span> for excellence</p>
             </div>
-    </div> <!-- End .content-wrapper -->
-
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+        </footer>
+    </div>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
 
