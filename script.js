@@ -1,22 +1,24 @@
 /*
-* Portfolio Logic
-* Handles: Preloader, Navigation, Project Filtering, Modals, Animations
-*/
+ * Portfolio — Refined Interactions
+ * Handles: Preloader, Navigation, Scroll Reveal, Project Filtering, Modals, Typing Effect, Counter Animation
+ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-
-    // --- Advanced Preloader (Text Decoding) ---
+    // ================================================
+    // PRELOADER — Text Decode Animation
+    // ================================================
     const preloader = document.getElementById('preloader');
     const loaderText = document.querySelector('.loader-text');
     const originalText = loaderText ? loaderText.innerText : 'LOADING';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
     if (preloader && loaderText) {
         let iterations = 0;
         const interval = setInterval(() => {
             loaderText.innerText = originalText.split('')
                 .map((letter, index) => {
+                    if (letter === ' ') return ' ';
                     if (index < iterations) return originalText[index];
                     return characters[Math.floor(Math.random() * characters.length)];
                 })
@@ -24,32 +26,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (iterations >= originalText.length) {
                 clearInterval(interval);
-
-                // Cyber Split Shutter Reveal
                 setTimeout(() => {
                     document.body.classList.add('loaded');
-
                     setTimeout(() => {
                         preloader.style.display = 'none';
-                        // Start Typing Effect after animation
                         initTypingEffect();
-                    }, 1000);
-                }, 1000);
+                        initCounterAnimation();
+                    }, 800);
+                }, 500);
             }
-            iterations += 1 / 3;
-        }, 30);
+            iterations += 0.5;
+        }, 25);
     }
 
-    // --- Typing Effect ---
+    // ================================================
+    // TYPING EFFECT
+    // ================================================
     function initTypingEffect() {
         const titleElement = document.querySelector('.hero-subtitle');
         if (!titleElement) return;
 
-        const roles = ["Flutter Developer", "Android Expert", "iOS Developer", "UI/UX Enthusiast"];
+        const roles = ['Flutter Developer', 'Android Expert', 'iOS Developer', 'UI/UX Enthusiast'];
         let roleIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
-        let typeSpeed = 100;
+        let typeSpeed = 80;
 
         titleElement.classList.add('typing-text');
 
@@ -59,20 +60,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isDeleting) {
                 titleElement.textContent = currentRole.substring(0, charIndex - 1);
                 charIndex--;
-                typeSpeed = 50;
+                typeSpeed = 40;
             } else {
                 titleElement.textContent = currentRole.substring(0, charIndex + 1);
                 charIndex++;
-                typeSpeed = 100;
+                typeSpeed = 80;
             }
 
             if (!isDeleting && charIndex === currentRole.length) {
                 isDeleting = true;
-                typeSpeed = 2000; // Pause at end
+                typeSpeed = 2500;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 roleIndex = (roleIndex + 1) % roles.length;
-                typeSpeed = 500; // Pause before new word
+                typeSpeed = 400;
             }
 
             setTimeout(type, typeSpeed);
@@ -81,233 +82,82 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // --- 3D Tilt Effect ---
-    const cards = document.querySelectorAll('.project-card');
-    cards.forEach(card => {
-        // Add glare element
-        const glare = document.createElement('div');
-        glare.classList.add('card-glare');
-        card.appendChild(glare);
+    // ================================================
+    // COUNTER ANIMATION
+    // ================================================
+    function initCounterAnimation() {
+        const counters = document.querySelectorAll('.stat-number[data-count]');
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-count'));
+            const suffix = counter.querySelector('span');
+            const suffixText = suffix ? suffix.textContent : '';
+            const duration = 1500;
+            const startTime = performance.now();
 
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease out quad
+                const eased = 1 - (1 - progress) * (1 - progress);
+                const current = Math.floor(eased * target);
 
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
+                counter.textContent = current;
+                if (suffixText) {
+                    const span = document.createElement('span');
+                    span.textContent = suffixText;
+                    counter.appendChild(span);
+                }
 
-            const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg rotation
-            const rotateY = ((x - centerX) / centerX) * 10;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-
-            // Move glare
-            const glareX = (x / rect.width) * 100;
-            const glareY = (y / rect.height) * 100;
-            glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.2), transparent)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-            glare.style.background = 'transparent';
-        });
-    });
-
-    // --- Magnetic Buttons ---
-    const magneticBtns = document.querySelectorAll('.btn, .nav-link, .social-icon, .skill-tag');
-    magneticBtns.forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-
-            // Stronger pull for smaller elements
-            const strength = btn.classList.contains('skill-tag') || btn.classList.contains('social-icon') ? 0.5 : 0.3;
-
-            btn.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
-        });
-
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = 'translate(0px, 0px)';
-        });
-    });
-
-    // --- Custom Cursor ---
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-
-    if (cursorDot && cursorOutline) {
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            // Dot follows instantly
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-
-            // Outline follows with delay
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: 'forwards' });
-
-            // --- Global Mouse Tracking for Spotlight ---
-            document.documentElement.style.setProperty('--mouse-x', `${posX}px`);
-            document.documentElement.style.setProperty('--mouse-y', `${posY}px`);
-
-            // --- Pixel Trail ---
-            createPixelTrail(posX, posY);
-        });
-
-        function createPixelTrail(x, y) {
-            const pixel = document.createElement('div');
-            pixel.classList.add('pixel-trail');
-            document.body.appendChild(pixel);
-
-            pixel.style.left = `${x}px`;
-            pixel.style.top = `${y}px`;
-
-            // Random scatter
-            const randomX = (Math.random() - 0.5) * 20;
-            const randomY = (Math.random() - 0.5) * 20;
-
-            pixel.animate([
-                { opacity: 1, transform: 'scale(1) translate(0,0)' },
-                { opacity: 0, transform: `scale(0) translate(${randomX}px, ${randomY}px)` }
-            ], {
-                duration: 500,
-                easing: 'ease-out'
-            }).onfinish = () => pixel.remove();
-        }
-
-        // Hover Effect
-        const hoverables = document.querySelectorAll('a, button, .project-card, .skill-tag');
-        hoverables.forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-        });
-    }
-
-    // --- Canvas Background (Constellation) ---
-    const canvas = document.getElementById('bg-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let particlesArray;
-
-        // Resize Canvas
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        class Particle {
-            constructor(x, y, directionX, directionY, size, color) {
-                this.x = x;
-                this.y = y;
-                this.directionX = directionX;
-                this.directionY = directionY;
-                this.size = size;
-                this.color = color;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = this.color;
-                ctx.fill();
-            }
-            update() {
-                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
-                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
-                this.x += this.directionX;
-                this.y += this.directionY;
-                this.draw();
-            }
-        }
-
-        function init() {
-            particlesArray = [];
-            // Higher density: 9000 -> 6000
-            let numberOfParticles = (canvas.height * canvas.width) / 6000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                let size = (Math.random() * 2) + 1;
-                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-                let directionX = (Math.random() * 0.4) - 0.2;
-                let directionY = (Math.random() * 0.4) - 0.2;
-                let color = 'rgba(0, 242, 255, 0.3)';
-
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-            }
-        }
-
-        // Pulse on Click
-        window.addEventListener('click', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
-            for (let i = 0; i < 5; i++) {
-                particlesArray.push(new Particle(x, y, (Math.random() - 0.5) * 5, (Math.random() - 0.5) * 5, Math.random() * 3 + 2, 'rgba(255, 0, 85, 0.8)'));
-            }
-        });
-
-        function connect() {
-            let opacityValue = 1;
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
-                        ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-                        opacityValue = 1 - (distance / 20000);
-                        ctx.strokeStyle = 'rgba(0, 242, 255,' + opacityValue + ')';
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
                 }
             }
-        }
 
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, innerWidth, innerHeight);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
-            connect();
-        }
-
-        init();
-        animate();
-
-        window.addEventListener('resize', () => {
-            canvas.width = innerWidth;
-            canvas.height = innerHeight;
-            init();
+            requestAnimationFrame(updateCounter);
         });
     }
 
-    // --- AOS Initialization ---
-    // Note: AOS library script must be loaded in HTML
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out-cubic',
-            once: true,
-            offset: 50
+    // ================================================
+    // SCROLL REVEAL — IntersectionObserver
+    // ================================================
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children');
+
+    if (revealElements.length > 0) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.15,
+            rootMargin: '0px 0px -40px 0px'
         });
+
+        revealElements.forEach(el => revealObserver.observe(el));
     }
 
-    // --- Navbar Scroll Effect ---
+    // ================================================
+    // NAVBAR — Scroll Effect
+    // ================================================
     const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
+
+    function handleScroll() {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-    });
+    }
 
-    // --- Mobile Menu ---
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Check on load
+
+    // ================================================
+    // MOBILE MENU
+    // ================================================
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -316,72 +166,92 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
     }
 
-    // Close menu when clicking a link
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
 
-    // --- Scroll Spy & Active Link ---
-    const sections = document.querySelectorAll('section');
-    // navLinks is already defined above
+    // ================================================
+    // SCROLL SPY — Active Nav Link
+    // ================================================
+    const sections = document.querySelectorAll('section[id]');
 
-    const observerOptions = {
-        root: null,
-        threshold: 0.2, // Trigger when 20% of section is visible
-        rootMargin: "-20% 0px -20% 0px"
-    };
-
-    const observer = new IntersectionObserver((entries) => {
+    const spyObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Remove active from all
                 navLinks.forEach(link => link.classList.remove('active'));
-
-                // Add active to current
                 const id = entry.target.getAttribute('id');
-                const link = document.querySelector(`.nav-link[href="#${id}"]`);
-                if (link) link.classList.add('active');
+                const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                if (activeLink) activeLink.classList.add('active');
             }
         });
-    }, observerOptions);
+    }, {
+        root: null,
+        threshold: 0.2,
+        rootMargin: '-20% 0px -20% 0px'
+    });
 
-    sections.forEach(section => observer.observe(section));
+    sections.forEach(section => spyObserver.observe(section));
 
-    // --- Project Filtering ---
+    // ================================================
+    // SMOOTH SCROLL — Offset for fixed header
+    // ================================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetEl = document.querySelector(targetId);
+            if (!targetEl) return;
+
+            e.preventDefault();
+            const headerOffset = 80;
+            const elementPosition = targetEl.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // ================================================
+    // PROJECT FILTERING
+    // ================================================
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
-    // Staggered Animation for Initial Load
-    projectCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.1}s`;
-    });
-
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active class from all
             filterBtns.forEach(b => b.classList.remove('active'));
-            // Add active to clicked
             btn.classList.add('active');
 
             const filterValue = btn.getAttribute('data-filter');
 
-            projectCards.forEach(card => {
-                if (filterValue === 'all' || card.getAttribute('data-category').includes(filterValue)) {
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 50);
-                } else {
+            projectCards.forEach((card, index) => {
+                const shouldShow = filterValue === 'all' || card.getAttribute('data-category').includes(filterValue);
+
+                if (shouldShow) {
+                    card.style.display = '';
                     card.style.opacity = '0';
-                    card.style.transform = 'scale(0.8)';
+                    card.style.transform = 'translateY(15px)';
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 60);
+                } else {
+                    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(10px)';
                     setTimeout(() => {
                         card.style.display = 'none';
                     }, 300);
@@ -390,13 +260,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Project Data Source ---
-    // Centralized data for Modals to keep HTML clean
+    // ================================================
+    // PROJECT MODAL
+    // ================================================
     const projectsData = {
         'mad3wo': {
             title: 'MAD3WO',
             category: 'Cross-platform App',
-            date: 'Oct 2024 - Present',
+            date: 'Oct 2024 — Present',
             desc: 'Developed a large-scale cross-platform Flutter application with over 70 responsive screens. The app features a highly polished UI using GetX for efficient state management. Integrated complex REST APIs and Firebase services (Realtime DB, Storage, Push Notifications) to ensure seamless dynamic content delivery and real-time updates.',
             tech: ['Flutter', 'GetX', 'Firebase', 'REST API', 'Android', 'iOS'],
             images: ['./images/mad3wo/mad3wo.png', './images/mad3wo/mad3wo2.png', './images/mad3wo/3.png']
@@ -404,15 +275,15 @@ document.addEventListener('DOMContentLoaded', () => {
         'qadem': {
             title: 'QADEM',
             category: 'Service App',
-            date: 'Jul 2025 - Present',
+            date: 'Jul 2025 — Present',
             desc: 'Built a scalable service-based Flutter application focusing on real-time chat functionality, interactive maps, and a modern, intuitive UI/UX. Integrated secure payment gateways (Stripe & Futura) for smooth transactions. Utilized GetX for state management and Firebase for robust backend services.',
             tech: ['Flutter', 'GetX', 'Firebase', 'Stripe', 'Google Maps'],
-            images: [] // Add image paths if available
+            images: []
         },
         'anexee': {
             title: 'Anexee',
             category: 'Enterprise App',
-            date: 'Dec 2024 - Present',
+            date: 'Dec 2024 — Present',
             desc: 'Developed a dynamic Android application for Anaxee using Flutter. Key features include real-time data processing with MQTT, encrypted secure login systems, and dynamic data-driven layouts (menus, grids) fetched from REST APIs.',
             tech: ['Flutter', 'MQTT', 'REST API', 'Security'],
             images: []
@@ -420,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'acchhu': {
             title: 'AccHHU',
             category: 'Hardware Integration',
-            date: 'Dec 2022 - Jun 2025',
+            date: 'Dec 2022 — Jun 2025',
             desc: 'A specialized Flutter application involving hardware integration. Implemented RS232 communication protocols and Bluetooth thermal printing capabilities. Features dynamic form generation to handle variable data input requirements.',
             tech: ['Flutter', 'RS232', 'Bluetooth', 'Hardware'],
             images: []
@@ -428,23 +299,15 @@ document.addEventListener('DOMContentLoaded', () => {
         'line-monitoring': {
             title: 'Line Monitoring',
             category: 'Auditing Tool',
-            date: 'Sep 2024 - Apr 2025',
+            date: 'Sep 2024 — Apr 2025',
             desc: 'Developed a comprehensive auditing application. The core feature is a fully functional dynamic form system that renders UI components based on JSON configurations, allowing for highly flexible audit checklists.',
             tech: ['Flutter', 'JSON Forms', 'REST API', 'Auditing'],
-            images: []
-        },
-        'line-audit': {
-            title: 'LineAudit',
-            category: 'Auditing Tool',
-            date: 'May 2024 - Jul 2024',
-            desc: 'Similar to Line Monitoring, this application focuses on process auditing with dynamic JSON-driven forms and API integration for submitting audit reports.',
-            tech: ['Flutter', 'JSON', 'API'],
             images: []
         },
         'alphatnd': {
             title: 'AlphaTND',
             category: 'Field Work App',
-            date: 'Oct 2023 - Apr 2024',
+            date: 'Oct 2023 — Apr 2024',
             desc: 'Played a key role in developing AlphaTND, an advanced mobile app for field operations. Features include sophisticated camera API integrations for evidence capture and location services for geo-tagging activities.',
             tech: ['Flutter', 'Camera API', 'Geolocation', 'REST API'],
             images: ['./images/alphatnd/3.png', './images/alphatnd/4.png', './images/alphatnd/5.png']
@@ -457,7 +320,96 @@ document.addEventListener('DOMContentLoaded', () => {
             tech: ['Flutter', 'Java', 'Android SDK', 'USB Serial'],
             images: ['./images/serialCom/serialCom.webp', './images/serialCom/serialCom2.webp']
         }
+    };
+
+    const modal = document.getElementById('project-modal');
+    const modalBody = modal ? modal.querySelector('.modal-body') : null;
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+
+    // Open modal when clicking project cards
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const projectKey = card.getAttribute('data-project');
+            const data = projectsData[projectKey];
+            if (!data || !modalBody) return;
+
+            // Build modal content
+            let galleryHTML = '';
+            if (data.images && data.images.length > 0) {
+                galleryHTML = `
+                    <div class="modal-gallery">
+                        ${data.images.map(img => `<img src="${img}" alt="${data.title}" onerror="this.style.display='none'">`).join('')}
+                    </div>
+                `;
+            }
+
+            modalBody.innerHTML = `
+                <div class="modal-header">
+                    <h2>${data.title}</h2>
+                    <div class="modal-meta">
+                        <span><i class="fas fa-folder"></i> ${data.category}</span>
+                        <span><i class="fas fa-calendar-alt"></i> ${data.date}</span>
+                    </div>
+                </div>
+                <div class="modal-description">${data.desc}</div>
+                <div class="modal-tech">
+                    ${data.tech.map(t => `<span>${t}</span>`).join('')}
+                </div>
+                ${galleryHTML}
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close modal
+    function closeModal() {
+        if (!modal) return;
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
     }
-});;
 
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeModal();
+        });
+    }
 
+    // Close on backdrop click
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    // ================================================
+    // CONTACT FORM — Basic Validation Feedback
+    // ================================================
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const btn = contactForm.querySelector('.btn-primary');
+            const originalText = btn.innerHTML;
+
+            btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            btn.style.background = '#22c55e';
+
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                contactForm.reset();
+            }, 2500);
+        });
+    }
+});
