@@ -224,185 +224,182 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ================================================
-    // PROJECT FILTERING & COUNTS
+    // DYNAMIC PROJECTS LOADING & FILTERING
     // ================================================
+    const projectsGridContainer = document.getElementById('projects-grid-container');
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    // Initialize counts
-    filterBtns.forEach(btn => {
-        const filterValue = btn.getAttribute('data-filter');
-        let count = 0;
-        
-        if (filterValue === 'all') {
-            count = projectCards.length;
-        } else {
-            projectCards.forEach(card => {
-                if (card.getAttribute('data-category').includes(filterValue)) {
-                    count++;
-                }
-            });
-        }
-        
-        const countSpan = btn.querySelector('.filter-count');
-        if (countSpan) {
-            countSpan.textContent = count;
-        }
-    });
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filterValue = btn.getAttribute('data-filter');
-
-            projectCards.forEach((card, index) => {
-                const shouldShow = filterValue === 'all' || card.getAttribute('data-category').includes(filterValue);
-
-                if (shouldShow) {
-                    card.style.display = '';
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(15px)';
-                    setTimeout(() => {
-                        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, index * 60);
-                } else {
-                    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(10px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
-            });
-        });
-    });
-
-    // ================================================
-    // PROJECT MODAL
-    // ================================================
-    const projectsData = {
-        'mad3wo': {
-            title: 'MAD3WO',
-            category: 'Cross-platform App',
-            date: 'Oct 2024 — Present',
-            desc: 'Developed a large-scale cross-platform Flutter application with over 70 responsive screens. The app features a highly polished UI using GetX for efficient state management. Integrated complex REST APIs and Firebase services (Realtime DB, Storage, Push Notifications) to ensure seamless dynamic content delivery and real-time updates.',
-            tech: ['Flutter', 'GetX', 'Firebase', 'REST API', 'Android', 'iOS'],
-            images: ['./images/mad3wo/mad3wo.png', './images/mad3wo/mad3wo2.png', './images/mad3wo/3.png']
-        },
-        'qadem': {
-            title: 'QADEM',
-            category: 'Service App',
-            date: 'Jul 2025 — Present',
-            desc: 'Built a scalable service-based Flutter application focusing on real-time chat functionality, interactive maps, and a modern, intuitive UI/UX. Integrated secure payment gateways (Stripe & Futura) for smooth transactions. Utilized GetX for state management and Firebase for robust backend services.',
-            tech: ['Flutter', 'GetX', 'Firebase', 'Stripe', 'Google Maps'],
-            images: []
-        },
-        'anexee': {
-            title: 'Anexee',
-            category: 'Enterprise App',
-            date: 'Dec 2024 — Present',
-            desc: 'Developed a dynamic Android application for Anaxee using Flutter. Key features include real-time data processing with MQTT, encrypted secure login systems, and dynamic data-driven layouts (menus, grids) fetched from REST APIs.',
-            tech: ['Flutter', 'MQTT', 'REST API', 'Security'],
-            images: []
-        },
-        'acchhu': {
-            title: 'AccHHU',
-            category: 'Hardware Integration',
-            date: 'Dec 2022 — Jun 2025',
-            desc: 'A specialized Flutter application involving hardware integration. Implemented RS232 communication protocols and Bluetooth thermal printing capabilities. Features dynamic form generation to handle variable data input requirements.',
-            tech: ['Flutter', 'RS232', 'Bluetooth', 'Hardware'],
-            images: []
-        },
-        'line-monitoring': {
-            title: 'Line Monitoring',
-            category: 'Auditing Tool',
-            date: 'Sep 2024 — Apr 2025',
-            desc: 'Developed a comprehensive auditing application. The core feature is a fully functional dynamic form system that renders UI components based on JSON configurations, allowing for highly flexible audit checklists.',
-            tech: ['Flutter', 'JSON Forms', 'REST API', 'Auditing'],
-            images: []
-        },
-        'alphatnd': {
-            title: 'AlphaTND',
-            category: 'Field Work App',
-            date: 'Oct 2023 — Apr 2024',
-            desc: 'Played a key role in developing AlphaTND, an advanced mobile app for field operations. Features include sophisticated camera API integrations for evidence capture and location services for geo-tagging activities.',
-            tech: ['Flutter', 'Camera API', 'Geolocation', 'REST API'],
-            images: ['./images/alphatnd/3.png', './images/alphatnd/4.png', './images/alphatnd/5.png']
-        },
-        'serialcom': {
-            title: 'SerialCom Plugin',
-            category: 'Open Source / Utility',
-            date: 'Sep 2023',
-            desc: 'Developed a custom Flutter plugin to bridge Dart and native Android Java code for USB serial communication. This plugin solved a critical need for communicating with external hardware devices via USB OTG.',
-            tech: ['Flutter', 'Java', 'Android SDK', 'USB Serial'],
-            images: ['./images/serialCom/serialCom.webp', './images/serialCom/serialCom2.webp']
-        },
-        'smarttiffin': {
-            title: 'Smart Tiffin',
-            category: 'Web & Android App',
-            date: '2026',
-            desc: 'A comprehensive food subscription platform delivering "Ghar Jaisa Khana". Users can subscribe to daily homemade tiffin meals (Normal, Premium, or Diet thalis) with flexible plans and doorstep delivery. Features include a smart app for leave management, live tracking, and bulk ordering.',
-            tech: ['Web', 'Android', 'Subscription Management', 'Live Tracking'],
-            images: []
-        },
-        'zaydsa': {
-            title: 'Zaydsa',
-            category: 'Web, Android & iOS App',
-            date: '2025',
-            desc: 'A robust multi-platform application encompassing Web, Android, and iOS to deliver a seamless user experience across all devices.',
-            tech: ['Web', 'Android', 'iOS'],
-            images: []
-        }
-    };
-
     const modal = document.getElementById('project-modal');
     const modalBody = modal ? modal.querySelector('.modal-body') : null;
     const modalCloseBtn = document.getElementById('modal-close-btn');
+    let globalProjectsData = {};
 
-    // Open modal when clicking project cards
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const projectKey = card.getAttribute('data-project');
-            const data = projectsData[projectKey];
-            if (!data || !modalBody) return;
+    function parseDateString(dateStr) {
+        if (dateStr.toLowerCase() === 'present' || dateStr.toLowerCase() === 'continue') {
+            return new Date();
+        }
+        const parts = dateStr.split('/');
+        if (parts.length === 2) {
+            return new Date(parseInt(parts[1]), parseInt(parts[0]) - 1, 1);
+        }
+        return new Date(dateStr);
+    }
 
-            // Build modal content
-            let galleryHTML = '';
-            if (data.images && data.images.length > 0) {
-                galleryHTML = `
-                    <div class="modal-gallery">
-                        ${data.images.map(img => `<img src="${img}" alt="${data.title}" onerror="this.style.display='none'">`).join('')}
-                    </div>
-                `;
+    function calculateDuration(startStr, endStr) {
+        const start = parseDateString(startStr);
+        const end = parseDateString(endStr);
+
+        let months = (end.getFullYear() - start.getFullYear()) * 12;
+        months -= start.getMonth();
+        months += end.getMonth();
+
+        if (months <= 0) return '1 month';
+
+        const years = Math.floor(months / 12);
+        const remainingMonths = months % 12;
+
+        let result = [];
+        if (years > 0) result.push(`${years} year${years > 1 ? 's' : ''}`);
+        if (remainingMonths > 0) result.push(`${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`);
+
+        return result.length > 0 ? result.join(' ') : '1 month';
+    }
+
+    function initFilters() {
+        const projectCards = document.querySelectorAll('.project-card');
+
+        // Initialize counts
+        filterBtns.forEach(btn => {
+            const filterValue = btn.getAttribute('data-filter');
+            let count = 0;
+
+            if (filterValue === 'all') {
+                count = projectCards.length;
+            } else {
+                projectCards.forEach(card => {
+                    if (card.getAttribute('data-category').includes(filterValue)) {
+                        count++;
+                    }
+                });
             }
 
-            modalBody.innerHTML = `
-                <div class="modal-header">
-                    <h2>${data.title}</h2>
-                    <div class="modal-meta">
-                        <span><i class="fas fa-folder"></i> ${data.category}</span>
-                        <span><i class="fas fa-calendar-alt"></i> ${data.date}</span>
+            const countSpan = btn.querySelector('.filter-count');
+            if (countSpan) {
+                countSpan.textContent = count;
+            }
+        });
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectCards.forEach((card, index) => {
+                    const shouldShow = filterValue === 'all' || card.getAttribute('data-category').includes(filterValue);
+
+                    if (shouldShow) {
+                        card.style.display = '';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(15px)';
+                        setTimeout(() => {
+                            card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, index * 60);
+                    } else {
+                        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(10px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    }
+
+    function initModals() {
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const projectKey = card.getAttribute('data-project');
+                const data = globalProjectsData[projectKey];
+                if (!data || !modalBody) return;
+
+                const duration = calculateDuration(data.startDate, data.endDate);
+                const dateDisplay = `${data.startDate} — ${data.endDate} (${duration})`;
+
+                let galleryHTML = '';
+                if (data.images && data.images.length > 0) {
+                    galleryHTML = `
+                        <div class="modal-gallery">
+                            ${data.images.map(img => `<img src="${img}" alt="${data.title}" onerror="this.style.display='none'">`).join('')}
+                        </div>
+                    `;
+                }
+
+                modalBody.innerHTML = `
+                    <div class="modal-header">
+                        <h2>${data.title}</h2>
+                        <div class="modal-meta">
+                            <span><i class="fas fa-folder"></i> ${data.category}</span>
+                            <span><i class="fas fa-clock"></i> ${dateDisplay}</span>
+                        </div>
+                    </div>
+                    <div class="modal-description">${data.desc}</div>
+                    <div class="modal-tech">
+                        ${data.allTech.map(t => `<span>${t}</span>`).join('')}
+                    </div>
+                    ${galleryHTML}
+                    <div class="modal-actions" style="padding: 0 32px 32px; display: flex; gap: 16px; margin-top:15px;">
+                        <a href="#" class="btn btn-primary" style="flex: 1; justify-content: center;"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    </div>
+                `;
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+    }
+
+    // Render projects from globally loaded projectsList
+    if (projectsGridContainer && typeof projectsList !== 'undefined') {
+        let html = '';
+        projectsList.forEach(p => {
+            globalProjectsData[p.id] = p;
+
+            const duration = calculateDuration(p.startDate, p.endDate);
+
+            html += `
+                <div class="project-card" data-category="${p.filterTags}" data-project="${p.id}">
+                    <div class="project-img-container">
+                        <div class="project-overlay">
+                            <span class="project-details-btn">View Details</span>
+                        </div>
+                        <img src="${p.thumbnail}" alt="${p.title}"
+                            onerror="this.src='https://placeholdit.com/600x400/' + (typeof placeholderBg !== 'undefined' ? placeholderBg : '000000') + '/' + (typeof placeholderText !== 'undefined' ? placeholderText : 'FFFFFF') + '?text=' + encodeURIComponent('${p.title}') + '&font_size=' + (typeof placeholderFontSize !== 'undefined' ? placeholderFontSize : '25')">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">${p.title}</h3>
+                        <div style="font-size: 0.75rem; color: var(--accent-primary); margin-bottom: 8px; font-weight: 500;">
+                            <i class="fas fa-clock"></i> Duration: ${duration}
+                        </div>
+                        <p class="project-desc">${p.shortDesc}</p>
+                        <div class="project-tags">
+                            ${p.tech.map(t => `<span>${t}</span>`).join('')}
+                        </div>
                     </div>
                 </div>
-                <div class="modal-description">${data.desc}</div>
-                <div class="modal-tech">
-                    ${data.tech.map(t => `<span>${t}</span>`).join('')}
-                </div>
-                ${galleryHTML}
-                <div class="modal-actions" style="padding: 0 32px 32px; display: flex; gap: 16px;">
-                    <a href="#" class="btn btn-primary" style="flex: 1; justify-content: center;"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                    <a href="#" class="btn btn-outline" style="flex: 1; justify-content: center;"><i class="fab fa-github"></i> View Code</a>
-                </div>
             `;
-
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
         });
-    });
+
+        projectsGridContainer.innerHTML = html;
+
+        // Initialize dependent features
+        initFilters();
+        initModals();
+    }
 
     // Close modal
     function closeModal() {
@@ -505,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function autoScroll() {
             if (!isHovered && !isUserScrolling) {
                 currentScroll += (scrollSpeed * scrollDirection);
-                
+
                 // Reverse direction if hitting ends
                 if (currentScroll >= (projectsGrid.scrollWidth - projectsGrid.clientWidth - 1)) {
                     scrollDirection = -1;
@@ -514,14 +511,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     scrollDirection = 1;
                     currentScroll = 0;
                 }
-                
+
                 projectsGrid.scrollLeft = currentScroll;
             } else if (isUserScrolling) {
                 currentScroll = projectsGrid.scrollLeft;
             }
             animationId = requestAnimationFrame(autoScroll);
         }
-        
+
         // Start auto scroll
         autoScroll();
     }
