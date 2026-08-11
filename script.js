@@ -470,37 +470,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectsGrid = document.querySelector('.projects-grid');
     if (projectsGrid) {
         let isHovered = false;
-        let isUserScrolling = false;
+        let isPaused = false;
+        let pauseTimeout;
         let scrollDirection = 1;
         let scrollSpeed = 0.5; // pixels per frame
+        let currentScroll = projectsGrid.scrollLeft;
         let animationId;
 
-        // Pause on hover
+        // Function to temporarily pause auto-scroll for 5 seconds
+        function triggerPause() {
+            isPaused = true;
+            clearTimeout(pauseTimeout);
+            pauseTimeout = setTimeout(() => {
+                isPaused = false;
+            }, 5000);
+        }
+
+        // Mouse hover interactions (Desktop)
         projectsGrid.addEventListener('mouseenter', () => isHovered = true);
-        projectsGrid.addEventListener('mouseleave', () => {
-            isHovered = false;
-            isUserScrolling = false;
-        });
+        projectsGrid.addEventListener('mouseleave', () => isHovered = false);
 
-        // Pause on touch
-        projectsGrid.addEventListener('touchstart', () => isHovered = true, { passive: true });
-        projectsGrid.addEventListener('touchend', () => {
-            setTimeout(() => { isHovered = false; isUserScrolling = false; }, 1000);
-        });
-
-        // Detect manual scrolling to temporarily pause
-        projectsGrid.addEventListener('wheel', () => {
-            isUserScrolling = true;
-            clearTimeout(projectsGrid.scrollTimeout);
-            projectsGrid.scrollTimeout = setTimeout(() => {
-                isUserScrolling = false;
-            }, 1000);
-        }, { passive: true });
-
-        let currentScroll = projectsGrid.scrollLeft;
+        // Touch and wheel interactions (Mobile & Desktop)
+        projectsGrid.addEventListener('touchstart', triggerPause, { passive: true });
+        projectsGrid.addEventListener('touchmove', triggerPause, { passive: true });
+        projectsGrid.addEventListener('wheel', triggerPause, { passive: true });
 
         function autoScroll() {
-            if (!isHovered && !isUserScrolling) {
+            // If not hovered and not in a 5s pause window, scroll automatically
+            if (!isHovered && !isPaused) {
                 currentScroll += (scrollSpeed * scrollDirection);
 
                 // Reverse direction if hitting ends
@@ -513,9 +510,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 projectsGrid.scrollLeft = currentScroll;
-            } else if (isUserScrolling) {
+            } else {
+                // VERY IMPORTANT: Sync currentScroll with actual scroll position
+                // when user is interacting, so it doesn't snap back when resuming!
                 currentScroll = projectsGrid.scrollLeft;
             }
+            
             animationId = requestAnimationFrame(autoScroll);
         }
 
