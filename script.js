@@ -224,10 +224,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ================================================
-    // PROJECT FILTERING
+    // PROJECT FILTERING & COUNTS
     // ================================================
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
+
+    // Initialize counts
+    filterBtns.forEach(btn => {
+        const filterValue = btn.getAttribute('data-filter');
+        let count = 0;
+        
+        if (filterValue === 'all') {
+            count = projectCards.length;
+        } else {
+            projectCards.forEach(card => {
+                if (card.getAttribute('data-category').includes(filterValue)) {
+                    count++;
+                }
+            });
+        }
+        
+        const countSpan = btn.querySelector('.filter-count');
+        if (countSpan) {
+            countSpan.textContent = count;
+        }
+    });
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -319,6 +340,22 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: 'Developed a custom Flutter plugin to bridge Dart and native Android Java code for USB serial communication. This plugin solved a critical need for communicating with external hardware devices via USB OTG.',
             tech: ['Flutter', 'Java', 'Android SDK', 'USB Serial'],
             images: ['./images/serialCom/serialCom.webp', './images/serialCom/serialCom2.webp']
+        },
+        'smarttiffin': {
+            title: 'Smart Tiffin',
+            category: 'Web & Android App',
+            date: '2026',
+            desc: 'A comprehensive food subscription platform delivering "Ghar Jaisa Khana". Users can subscribe to daily homemade tiffin meals (Normal, Premium, or Diet thalis) with flexible plans and doorstep delivery. Features include a smart app for leave management, live tracking, and bulk ordering.',
+            tech: ['Web', 'Android', 'Subscription Management', 'Live Tracking'],
+            images: []
+        },
+        'zaydsa': {
+            title: 'Zaydsa',
+            category: 'Web, Android & iOS App',
+            date: '2025',
+            desc: 'A robust multi-platform application encompassing Web, Android, and iOS to deliver a seamless user experience across all devices.',
+            tech: ['Web', 'Android', 'iOS'],
+            images: []
         }
     };
 
@@ -356,6 +393,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${data.tech.map(t => `<span>${t}</span>`).join('')}
                 </div>
                 ${galleryHTML}
+                <div class="modal-actions" style="padding: 0 32px 32px; display: flex; gap: 16px;">
+                    <a href="#" class="btn btn-primary" style="flex: 1; justify-content: center;"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    <a href="#" class="btn btn-outline" style="flex: 1; justify-content: center;"><i class="fab fa-github"></i> View Code</a>
+                </div>
             `;
 
             modal.classList.add('active');
@@ -411,5 +452,77 @@ document.addEventListener('DOMContentLoaded', () => {
                 contactForm.reset();
             }, 2500);
         });
+    }
+
+    // ================================================
+    // SCROLL PROGRESS
+    // ================================================
+    const scrollProgress = document.getElementById('scroll-progress');
+    if (scrollProgress) {
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        }, { passive: true });
+    }
+
+    // ================================================
+    // PROJECTS AUTO SCROLL
+    // ================================================
+    const projectsGrid = document.querySelector('.projects-grid');
+    if (projectsGrid) {
+        let isHovered = false;
+        let isUserScrolling = false;
+        let scrollDirection = 1;
+        let scrollSpeed = 0.5; // pixels per frame
+        let animationId;
+
+        // Pause on hover
+        projectsGrid.addEventListener('mouseenter', () => isHovered = true);
+        projectsGrid.addEventListener('mouseleave', () => {
+            isHovered = false;
+            isUserScrolling = false;
+        });
+
+        // Pause on touch
+        projectsGrid.addEventListener('touchstart', () => isHovered = true, { passive: true });
+        projectsGrid.addEventListener('touchend', () => {
+            setTimeout(() => { isHovered = false; isUserScrolling = false; }, 1000);
+        });
+
+        // Detect manual scrolling to temporarily pause
+        projectsGrid.addEventListener('wheel', () => {
+            isUserScrolling = true;
+            clearTimeout(projectsGrid.scrollTimeout);
+            projectsGrid.scrollTimeout = setTimeout(() => {
+                isUserScrolling = false;
+            }, 1000);
+        }, { passive: true });
+
+        let currentScroll = projectsGrid.scrollLeft;
+
+        function autoScroll() {
+            if (!isHovered && !isUserScrolling) {
+                currentScroll += (scrollSpeed * scrollDirection);
+                
+                // Reverse direction if hitting ends
+                if (currentScroll >= (projectsGrid.scrollWidth - projectsGrid.clientWidth - 1)) {
+                    scrollDirection = -1;
+                    currentScroll = projectsGrid.scrollWidth - projectsGrid.clientWidth - 1;
+                } else if (currentScroll <= 0) {
+                    scrollDirection = 1;
+                    currentScroll = 0;
+                }
+                
+                projectsGrid.scrollLeft = currentScroll;
+            } else if (isUserScrolling) {
+                currentScroll = projectsGrid.scrollLeft;
+            }
+            animationId = requestAnimationFrame(autoScroll);
+        }
+        
+        // Start auto scroll
+        autoScroll();
     }
 });

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Gajendra Somawat | Full-Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700;800&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-container": "#ffcee2",
+                        "on-primary": "#1d00a5",
+                        "on-secondary": "#003640",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-primary-fixed": "#0f0069",
+                        "surface-dim": "#0b1326",
+                        "inverse-surface": "#dae2fd",
+                        "outline-variant": "#464555",
+                        "on-surface": "#dae2fd",
+                        "inverse-primary": "#4d44e3",
+                        "error": "#ffb4ab",
+                        "secondary": "#4cd7f6",
+                        "on-secondary-container": "#00424e",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary-fixed-variant": "#85145a",
+                        "secondary-container": "#03b5d3",
+                        "surface-variant": "#2d3449",
+                        "on-surface-variant": "#c7c4d8",
+                        "on-error": "#690005",
+                        "surface": "#0b1326",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#dad7ff",
+                        "tertiary-fixed-dim": "#ffafd3",
+                        "on-tertiary-fixed": "#3d0026",
+                        "secondary-fixed": "#acedff",
+                        "inverse-on-surface": "#283044",
+                        "on-secondary-fixed": "#001f26",
+                        "tertiary-fixed": "#ffd8e7",
+                        "background": "#020617",
+                        "on-tertiary": "#620040",
+                        "tertiary-container": "#a63274",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "surface-tint": "#c3c0ff",
+                        "tertiary": "#ffafd3",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-background": "#dae2fd",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "primary-container": "#4f46e5",
+                        "surface-container-lowest": "#060e20",
+                        "surface-container": "#171f33",
+                        "surface-bright": "#31394d",
+                        "surface-container-highest": "#2d3449",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#222a3d",
+                        "outline": "#918fa1",
+                        "primary-fixed": "#e2dfff",
+                        "primary": "#4f46e5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "32px",
+                        "container-max": "1280px",
+                        "section-padding-desktop": "120px",
+                        "unit": "8px",
+                        "section-padding-mobile": "64px"
+                    },
+                    fontFamily: {
+                        "body-lg": ["Inter", "sans-serif"],
+                        "headline-md": ["Hanken Grotesk", "sans-serif"],
+                        "display-lg": ["Hanken Grotesk", "sans-serif"],
+                        "display-xl": ["Hanken Grotesk", "sans-serif"],
+                        "headline-sm": ["Hanken Grotesk", "sans-serif"],
+                        "display-lg-mobile": ["Hanken Grotesk", "sans-serif"],
+                        "label-md": ["JetBrains Mono", "monospace"],
+                        "body-md": ["Inter", "sans-serif"]
+                    },
+                    fontSize: {
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "headline-md": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "display-xl": ["72px", { lineHeight: "80px", letterSpacing: "-0.04em", fontWeight: "800" }],
+                        "headline-sm": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "display-lg-mobile": ["36px", { lineHeight: "44px", fontWeight: "700" }],
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "500" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+
+        .glass-panel {
+            background: rgba(11, 19, 38, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-panel-hover:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 20px 40px rgba(79, 70, 229, 0.15);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #dae2fd, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-primary/30 selection:text-white">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-xl border-b border-white/10 transition-all duration-300"
+        id="navbar">
+        <div class="max-w-container-max mx-auto px-gutter flex justify-between items-center h-20">
+            <a class="text-headline-sm font-display-lg-mobile text-on-background dark:text-on-background tracking-tight"
+                href="#">Gajendra.</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-primary dark:text-primary border-b-2 border-primary pb-1 font-body-md text-body-md"
+                    href="#home">Home</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="#about">About</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="#projects">Projects</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="#contact">Contact</a>
+            </div>
+            <button
+                class="hidden md:flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-container transition-colors shadow-[0_0_20px_rgba(79,70,229,0.3)] font-label-md text-label-md">
+                Download CV <span class="material-symbols-outlined text-sm">download</span>
+            </button>
+            <button class="md:hidden text-on-background">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </nav>
+    <main class="pt-24">
+        <!-- Section 1: Hero -->
+        <section
+            class="min-h-[90vh] flex items-center relative overflow-hidden px-gutter max-w-container-max mx-auto py-section-padding-mobile md:py-section-padding-desktop"
+            id="home">
+            <div
+                class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-background to-background -z-10">
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+                <div class="space-y-8 z-10">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 glass-panel">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="font-label-md text-label-md text-on-surface-variant">Available for Work</span>
+                    </div>
+                    <h1
+                        class="font-display-lg-mobile md:font-display-xl text-display-lg-mobile md:text-display-xl text-on-background">
+                        Gajendra<br />Somawat
+                    </h1>
+                    <h2 class="font-headline-md text-headline-md text-primary">UI/UX Enthusiast</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        Full-Stack Developer building high-performance mobile apps, websites, backend systems, and
+                        scalable digital solutions from development to deployment.
+                    </p>
+                    <div class="flex gap-8 pt-4 border-t border-white/10">
+                        <div>
+                            <div class="font-headline-sm text-headline-sm text-on-background flex items-center">4<span
+                                    class="text-primary">+</span></div>
+                            <div
+                                class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mt-1">
+                                Years Exp.</div>
+                        </div>
+                        <div>
+                            <div class="font-headline-sm text-headline-sm text-on-background flex items-center">10<span
+                                    class="text-primary">+</span></div>
+                            <div
+                                class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mt-1">
+                                Apps Built</div>
+                        </div>
+                        <div>
+                            <div class="font-headline-sm text-headline-sm text-on-background">2</div>
+                            <div
+                                class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mt-1">
+                                Platforms</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 pt-4">
+                        <a class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(79,70,229,0.2)] font-label-md text-label-md"
+                            href="#projects">
+                            View Projects <span
+                                class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+                        </a>
+                        <a class="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-white/10 hover:border-primary/50 transition-colors font-label-md text-label-md text-on-background glass-panel"
+                            href="#contact">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+                <div class="relative w-full aspect-[4/5] md:aspect-square rounded-2xl overflow-hidden glass-panel p-2">
+                    <img alt="Gajendra Somawat"
+                        class="w-full h-full object-cover rounded-xl filter grayscale hover:grayscale-0 transition-all duration-700"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6bpN4KBWIqJ85eJ-tKapvQWcVN9kSOADiW48kRqr7km8TeXDC-AEz0OmoQmGUXIE3cd6Sa9QZEipmw1xPOzPVyu9l-KFNnyWB03cMJ9sdcCYEBalqk_fwbKOTppuK1obhk4fLSmbt8RABT4SwhbNzHWt8e7Q65Qtk5sxUjYkz3IYWs7TUZDj5miYCHLBSlZq-aR4ye38d7HozOJh-xjK1NWlE4Si57wOjopui7eQ5LfNF4tVa3ZtHCUwFKZVvusypSQ" />
+                </div>
+            </div>
+        </section>
+        <!-- Section 2: About Me -->
+        <section class="px-gutter max-w-container-max mx-auto py-section-padding-mobile md:py-section-padding-desktop"
+            id="about">
+            <div class="text-center mb-16">
+                <h2 class="font-display-lg text-display-lg text-on-background mb-4">About Me</h2>
+                <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group">
+                    <div
+                        class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-background mb-6 relative z-10">Developer
+                        Workspace</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant relative z-10">A dedicated environment
+                        optimized for deep work, architectural planning, and seamless execution.</p>
+                </div>
+                <div class="space-y-6">
+                    <h3 class="font-headline-md text-headline-md text-on-background">Building <span
+                            class="text-primary">Digital Experiences</span></h3>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        I am a passionate Flutter Developer with over 4 years of hands-on experience in the full mobile
+                        app development lifecycle. I have successfully deployed apps to both the Google Play Store and
+                        Apple App Store.
+                    </p>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        My technical stack includes <strong class="text-on-background">GetX</strong> for state
+                        management and <strong class="text-on-background">Firebase</strong> services to build robust,
+                        scalable applications.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Section 3: Technologies -->
+        <section class="py-section-padding-mobile md:py-section-padding-desktop relative">
+            <div class="absolute inset-0 bg-surface-container-lowest skew-y-3 origin-top-left -z-10"></div>
+            <div class="px-gutter max-w-container-max mx-auto text-center">
+                <h2 class="font-display-lg text-display-lg text-on-background mb-16">Technologies</h2>
+                <!-- Assuming the requested image provides context for the layout/style -->
+                <div class="relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden glass-panel p-4 mb-12">
+                    <img alt="Technology Stack Layout Reference"
+                        class="w-full h-auto object-cover rounded-xl opacity-80 hover:opacity-100 transition-opacity"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGlZdEa-qu225ZK7wKfOuf6PiPV8jBhUgKmvv7Dot4rjRkqMi-aLqWs1mee8SJj2XPctMjGWs9VdLHPyqLSBv2MVu_c1dpjKn1YcX7xZbzxLIoDhhbXaV1Anc62liWBfWNAKr1zNPvE93q2d0lFxL3V3fmBJstOAWLGLlNGpf7kki-lA4627uZTE8cf-12Ye97vmqDIMZ_GeRgtUusonivXIVBzuk2_BRBZhzz61rtlfJbm2hUp-imxi93i3XFiCKx4w" />
+                </div>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <!-- Tech Chips -->
+                    <span
+                        class="px-6 py-3 rounded-full border border-white/10 glass-panel font-label-md text-label-md text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all cursor-default">JavaScript</span>
+                    <span
+                        class="px-6 py-3 rounded-full border border-white/10 glass-panel font-label-md text-label-md text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all cursor-default">Firebase</span>
+                    <span
+                        class="px-6 py-3 rounded-full border border-white/10 glass-panel font-label-md text-label-md text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all cursor-default">SQL</span>
+                    <span
+                        class="px-6 py-3 rounded-full border border-white/10 glass-panel font-label-md text-label-md text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all cursor-default">Git</span>
+                    <span
+                        class="px-6 py-3 rounded-full border border-white/10 glass-panel font-label-md text-label-md text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all cursor-default">Flutter</span>
+                    <span
+                        class="px-6 py-3 rounded-full border border-white/10 glass-panel font-label-md text-label-md text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all cursor-default">Android</span>
+                    <span
+                        class="px-6 py-3 rounded-full border border-white/10 glass-panel font-label-md text-label-md text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all cursor-default">iOS</span>
+                    <span
+                        class="px-6 py-3 rounded-full border border-white/10 glass-panel font-label-md text-label-md text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all cursor-default">React</span>
+                </div>
+            </div>
+        </section>
+        <!-- Section 4: Projects -->
+        <section class="px-gutter max-w-container-max mx-auto py-section-padding-mobile md:py-section-padding-desktop"
+            id="projects">
+            <div class="text-center mb-16">
+                <h2 class="font-display-lg text-display-lg text-on-background mb-4">My Projects</h2>
+                <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-8"></div>
+                <div class="inline-flex p-1 rounded-full border border-white/10 glass-panel">
+                    <button
+                        class="px-6 py-2 rounded-full bg-primary/20 text-primary font-label-md text-label-md transition-all">All</button>
+                    <button
+                        class="px-6 py-2 rounded-full text-on-surface-variant hover:text-on-background font-label-md text-label-md transition-all">Flutter</button>
+                    <button
+                        class="px-6 py-2 rounded-full text-on-surface-variant hover:text-on-background font-label-md text-label-md transition-all">Mobile</button>
+                    <button
+                        class="px-6 py-2 rounded-full text-on-surface-variant hover:text-on-background font-label-md text-label-md transition-all">Web</button>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1: MAD3WO -->
+                <div
+                    class="glass-panel glass-panel-hover rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full">
+                    <div class="h-48 bg-white overflow-hidden relative p-4 flex items-center justify-center">
+                        <img alt="MAD3WO Logo"
+                            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4SSTXWCdcM08QOeET2nDfPI6bYfNUNMHBIBpt_l8z2zVRgfgy7BgGa5xG9md-Bg_X1PSLFt2rp0vpLFN8rMny-4JVDQBB3TAkLV4-ZgAlYkf0Vjr3-nCqu3i5TVSTZWapVM8HEkd9IkQ7N9aijF-BlWoIrP6qXxJrxSDL9QwuzNupj4SRaK-B7b9l34bp4gN_bnoXDAEtmc_6AbZtj0QPB1ybYu6CqHrxfqTzKekhSwGoKI1KzTBZ1mr9oIafVB5rCw" />
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h3 class="font-headline-sm text-headline-sm text-on-background mb-2">MAD3WO</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">Cross-platform Flutter
+                            app with 70+ responsive screens and complex backend integration.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span
+                                class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-md text-[12px] border border-primary/20">Flutter</span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-md text-[12px] border border-primary/20">GetX</span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-md text-[12px] border border-primary/20">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2: QADEM -->
+                <div
+                    class="glass-panel glass-panel-hover rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full">
+                    <div class="h-48 bg-surface-container-high flex items-center justify-center">
+                        <h3
+                            class="font-display-lg text-display-lg text-primary tracking-tight group-hover:scale-105 transition-transform duration-500">
+                            QADEM</h3>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h3 class="font-headline-sm text-headline-sm text-on-background mb-2">QADEM</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">Service app with
+                            real-time chat, maps, and Stripe payment integration.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span
+                                class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-md text-[12px] border border-primary/20">Flutter</span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-md text-[12px] border border-primary/20">Maps</span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-md text-[12px] border border-primary/20">Stripe</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3: Anexee -->
+                <div
+                    class="glass-panel glass-panel-hover rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full">
+                    <div class="h-48 bg-surface-container-high flex items-center justify-center">
+                        <h3
+                            class="font-display-lg text-display-lg text-primary tracking-tight group-hover:scale-105 transition-transform duration-500">
+                            Anexee</h3>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h3 class="font-headline-sm text-headline-sm text-on-background mb-2">Anexee</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">Dynamic Android app
+                            with MQTT and data-driven layouts for enterprise use.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span
+                                class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-md text-[12px] border border-primary/20">MQTT</span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-md text-[12px] border border-primary/20">Security</span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-md text-[12px] border border-primary/20">Enterprise</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section 5: Get In Touch -->
+        <section class="px-gutter max-w-container-max mx-auto py-section-padding-mobile md:py-section-padding-desktop"
+            id="contact">
+            <div class="glass-panel rounded-2xl p-8 md:p-16 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] -z-10"></div>
+                <div class="grid md:grid-cols-2 gap-16">
+                    <div>
+                        <h2 class="font-display-lg text-display-lg text-on-background mb-6">Get In Touch</h2>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-md">
+                            Interested in working together or have a question? Drop a message and I'll get back to you
+                            as soon as possible.
+                        </p>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4 group">
+                                <div
+                                    class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined">mail</span>
+                                </div>
+                                <div>
+                                    <div class="font-label-md text-label-md text-on-surface-variant">Email</div>
+                                    <a class="font-body-lg text-body-lg text-on-background hover:text-primary transition-colors"
+                                        href="mailto:gmjoshi998@gmail.com">gmjoshi998@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 group">
+                                <div
+                                    class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined">call</span>
+                                </div>
+                                <div>
+                                    <div class="font-label-md text-label-md text-on-surface-variant">Phone</div>
+                                    <a class="font-body-lg text-body-lg text-on-background hover:text-primary transition-colors"
+                                        href="tel:+919024064744">+91 9024064744</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="space-y-6">
+                        <div class="space-y-2">
+                            <label class="font-label-md text-label-md text-on-surface-variant">Name</label>
+                            <input
+                                class="w-full bg-surface-container-low border border-white/10 rounded-lg px-4 py-3 text-on-background focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-body-md"
+                                placeholder="John Doe" type="text" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-label-md text-label-md text-on-surface-variant">Email</label>
+                            <input
+                                class="w-full bg-surface-container-low border border-white/10 rounded-lg px-4 py-3 text-on-background focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-body-md"
+                                placeholder="john@example.com" type="email" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-label-md text-label-md text-on-surface-variant">Message</label>
+                            <textarea
+                                class="w-full bg-surface-container-low border border-white/10 rounded-lg px-4 py-3 text-on-background focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-body-md resize-none"
+                                placeholder="How can I help you?" rows="4"></textarea>
+                        </div>
+                        <button
+                            class="w-full bg-primary text-white py-4 rounded-lg hover:bg-primary-container transition-colors shadow-[0_0_20px_rgba(79,70,229,0.3)] font-label-md text-label-md flex justify-center items-center gap-2"
+                            type="button">
+                            Send Message <span class="material-symbols-outlined text-sm">send</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-white/10">
+        <div
+            class="max-w-container-max mx-auto px-gutter py-unit*8 flex flex-col md:flex-row justify-between items-center gap-4 py-8">
+            <p class="font-body-md text-body-md text-on-surface-variant">
+                © 2024 Gajendra Somawat. Built with technical precision.
+            </p>
+            <div class="flex gap-6">
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-opacity duration-300"
+                    href="#">LinkedIn</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-opacity duration-300"
+                    href="#">GitHub</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-opacity duration-300"
+                    href="#">Twitter</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-opacity duration-300"
+                    href="#">Email</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Simple nav highlight script
+        document.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary', 'border-b-2', 'border-primary', 'pb-1');
+                link.classList.add('text-on-surface-variant');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.remove('text-on-surface-variant');
+                    link.classList.add('text-primary', 'border-b-2', 'border-primary', 'pb-1');
+                }
+            });
+
+            // Navbar glass effect on scroll
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+
+</html>

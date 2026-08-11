@@ -8,7 +8,7 @@
 
     <!-- SEO -->
     <meta name="description"
-        content="Gajendra Somawat — Flutter Developer with 3+ years of experience building high-performance cross-platform mobile apps for Android & iOS. Specialized in GetX, Firebase, and scalable mobile solutions.">
+        content="Gajendra Somawat — Flutter Developer with 4+ years of experience building high-performance cross-platform mobile apps for Android & iOS. Specialized in GetX, Firebase, and scalable mobile solutions.">
     <meta name="keywords"
         content="Flutter Developer, Mobile App Developer, Android, iOS, Cross-Platform, Dart, Firebase, GetX">
     <meta name="author" content="Gajendra Somawat">
@@ -17,7 +17,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Gajendra Somawat — Flutter Developer">
     <meta property="og:description"
-        content="3+ years of experience delivering high-performance cross-platform apps for Android & iOS.">
+        content="4+ years of experience delivering high-performance cross-platform apps for Android & iOS.">
     <meta property="og:type" content="website">
 
     <!-- Fonts -->
@@ -36,6 +36,9 @@
 
 <body>
 
+    <!-- Scroll Progress -->
+    <div id="scroll-progress"></div>
+
     <!-- Preloader -->
     <div id="preloader">
         <div class="shutter shutter-top"></div>
@@ -50,7 +53,7 @@
         <!-- Header -->
         <header id="main-header">
             <div class="container nav-container">
-                <a href="#" class="logo">Gajendra<span>.</span></a>
+                <a href="#" class="logo"><img src="images/logo.png" alt="Gajendra Logo"></a>
 
                 <nav>
                     <ul class="nav-menu">
@@ -78,12 +81,13 @@
                     <h1 class="hero-title reveal">Gajendra Somawat</h1>
                     <h2 class="hero-subtitle reveal">Flutter Developer</h2>
                     <p class="hero-desc reveal">
-                        Full-Stack Developer building high-performance mobile apps, websites, backend systems, and scalable digital solutions from development to deployment.
+                        Full-Stack Developer building high-performance mobile apps, websites, backend systems, and
+                        scalable digital solutions from development to deployment.
                     </p>
 
                     <div class="hero-stats reveal">
                         <div class="stat-item">
-                            <div class="stat-number" data-count="3">0<span>+</span></div>
+                            <div class="stat-number" data-count="4">0<span>+</span></div>
                             <div class="stat-label">Years Exp.</div>
                         </div>
                         <div class="stat-item">
@@ -105,26 +109,39 @@
                 <div class="hero-image reveal-scale">
                     <div class="hero-blob"></div>
                     <div class="hero-img-wrapper">
-                        <img src="images/profile.jpg" alt="Gajendra Somawat — Flutter Developer"
+                        <img src="images/profile.png" alt="Gajendra Somawat — Flutter Developer"
                             onerror="this.src='https://placehold.co/400x400/111118/6366f1?text=GS&font=space-grotesk'">
                     </div>
                 </div>
             </div>
         </section>
+        <!-- Marquee Separator -->
+        <div class="marquee-separator">
+            <div class="marquee-track">
+                <span>FLUTTER DEVELOPER <i class="fas fa-star-of-life"></i></span>
+                <span>UI/UX ENTHUSIAST <i class="fas fa-star-of-life"></i></span>
+                <span>FRONTEND ARCHITECT <i class="fas fa-star-of-life"></i></span>
+                <span>MOBILE APP DEVELOPMENT <i class="fas fa-star-of-life"></i></span>
+                <!-- Duplicate for seamless scroll -->
+                <span>FLUTTER DEVELOPER <i class="fas fa-star-of-life"></i></span>
+                <span>UI/UX ENTHUSIAST <i class="fas fa-star-of-life"></i></span>
+                <span>FRONTEND ARCHITECT <i class="fas fa-star-of-life"></i></span>
+                <span>MOBILE APP DEVELOPMENT <i class="fas fa-star-of-life"></i></span>
+            </div>
+        </div>
 
         <!-- About Section -->
-        <section id="about" class="section">
+        <section id="about" class="section" style="margin-top: -50px !important;">
             <div class="container">
                 <h2 class="section-title reveal">About Me</h2>
                 <div class="about-content">
                     <div class="about-img reveal-left">
-                        <img src="https://placehold.co/600x420/111118/6366f1?text=Developer+Workspace&font=space-grotesk"
-                            alt="Developer Workspace">
+                        <img src="images/developer_workspace.png" alt="Developer Workspace">
                     </div>
                     <div class="about-text reveal-right">
                         <h3>Building <span>Digital Experiences</span></h3>
                         <p>
-                            I am a passionate Flutter Developer with over 3 years of hands-on experience in the full
+                            I am a passionate Flutter Developer with over 4 years of hands-on experience in the full
                             mobile app development lifecycle. I have successfully deployed apps to both the Google Play
                             Store and Apple App Store.
                         </p>
@@ -182,10 +199,10 @@
                 <h2 class="section-title reveal">My Projects</h2>
 
                 <div class="projects-filter reveal">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="flutter">Flutter</button>
-                    <button class="filter-btn" data-filter="mobile">Mobile</button>
-                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn active" data-filter="all">All <span class="filter-count"></span></button>
+                    <button class="filter-btn" data-filter="flutter">Flutter <span class="filter-count"></span></button>
+                    <button class="filter-btn" data-filter="mobile">Mobile <span class="filter-count"></span></button>
+                    <button class="filter-btn" data-filter="web">Web <span class="filter-count"></span></button>
                 </div>
 
                 <div class="projects-grid stagger-children">
@@ -314,6 +331,45 @@
                         </div>
                     </div>
 
+                    <!-- Project 8: SmartTiffin -->
+                    <div class="project-card" data-category="web mobile" data-project="smarttiffin">
+                        <div class="project-img-container">
+                            <div class="project-overlay">
+                                <span class="project-details-btn">View Details</span>
+                            </div>
+                            <img src="https://placehold.co/600x400/111118/6366f1?text=SmartTiffin&font=space-grotesk"
+                                alt="SmartTiffin — Web & Android App">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">SmartTiffin</h3>
+                            <p class="project-desc">Web and Android application for managing tiffin services.</p>
+                            <div class="project-tags">
+                                <span>Web</span>
+                                <span>Android</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 9: Zaydsa -->
+                    <div class="project-card" data-category="web mobile" data-project="zaydsa">
+                        <div class="project-img-container">
+                            <div class="project-overlay">
+                                <span class="project-details-btn">View Details</span>
+                            </div>
+                            <img src="https://placehold.co/600x400/111118/6366f1?text=Zaydsa&font=space-grotesk"
+                                alt="Zaydsa — Web, Android & iOS App">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Zaydsa</h3>
+                            <p class="project-desc">Comprehensive Web, Android, and iOS application.</p>
+                            <div class="project-tags">
+                                <span>Web</span>
+                                <span>Android</span>
+                                <span>iOS</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Project 7: SerialCom -->
                     <div class="project-card" data-category="flutter mobile" data-project="serialcom">
                         <div class="project-img-container">
@@ -334,19 +390,10 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
-
-        <!-- Project Modal -->
-        <div class="modal" id="project-modal">
-            <div class="modal-content">
-                <div class="modal-close" id="modal-close-btn"><i class="fas fa-times"></i></div>
-                <div class="modal-body">
-                    <!-- Content injected via JS -->
-                </div>
-            </div>
-        </div>
 
         <!-- Contact Section -->
         <section id="contact" class="section">
@@ -402,11 +449,21 @@
         <!-- Footer -->
         <footer>
             <div class="container">
-                <div class="logo">Gajendra<span>.</span></div>
+                <div class="logo"><img src="images/logo.png" alt="Gajendra Logo"></div>
                 <p class="footer-text">© 2025 Gajendra Somawat. All rights reserved.</p>
                 <p class="footer-text footer-sub">Designed with <span class="footer-heart">❤</span> for excellence</p>
             </div>
         </footer>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <div class="modal-close" id="modal-close-btn"><i class="fas fa-times"></i></div>
+            <div class="modal-body">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
